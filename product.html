@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Product Detail</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <div class="logo"><a href="WebSiteDemo.html">Camilla</a></div>
+    <nav>
+      <a href="woman.html">Woman</a>
+      <a href="man.html">Man</a>
+      <a href="bags.html">Bags</a>
+      <a href="vr.html">VR</a>
+    </nav>
+    <div class="top-icons">
+      <a href="#cart">🛒</a>
+      <a href="profile.html">👤</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="product-detail">
+      <!-- Image wrapper with heart button inside -->
+      <div class="image-wrapper">
+        <img id="product-image" class="detail-image" />
+        <button class="heart-button" onclick="toggleHeart(this)">♡</button>
+      </div>
+      
+      <div class="detail-info">
+        <h1 id="product-name"></h1>
+        <p id="product-price" class="price"></p>
+        <p id="product-description" class="description"></p>
+        
+        <!-- Size buttons -->
+        <div class="sizes">
+          <label>Size:</label>
+          <div class="size-buttons">
+            <!-- Buttons will be inserted here dynamically -->
+
+          </div>
+        </div>
+        
+        <!-- Add to cart button -->
+        <button class="add-to-cart-btn" disabled>Add to Cart</button>
+        
+        </div>
+      </div>
+      <div id="popup" class="popup">Product added to cart!</div>
+  </main>
+  
+  <section id="same-collection" class="collection-suggestions">
+    <h2>  From the same collection</h2>
+    <div id="suggested-products" class="product-grid"></div>
+  </section>
+  
+  
+
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>Customer Care</h4>
+        <ul>
+          <li><a href="#">Contact us</a></li>
+          <li><a href="#">Shipping</a></li>
+          <li><a href="#">Returns</a></li>
+          <li><a href="#">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Explore</h4>
+        <ul>
+            <a href="woman.html">Woman</a>
+            <a href="man.html">Man</a>
+            <a href="bags.html">Bags</a>
+            <a href="vr.html">VR</a>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Follow Us</h4>
+        <ul class="socials">
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">TikTok</a></li>
+          <li><a href="#">Pinterest</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="copyright">
+      &copy; 2025 Camilla Fashion. All rights reserved.
+    </p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
