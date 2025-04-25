@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Welcome to My VR World</title>
+    <style>
+      body {
+        margin: 0;
+        background: black;
+        color: white;
+        font-family: sans-serif;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 100vh;
+        /*background-image: url('assets/your-splash-image.jpg'); /* Optional image */
+        background-size: cover;
+        background-position: center;
+      }
+
+      .overlay {
+        background-color: rgba(0, 0, 0, 0.7);
+        padding: 2rem;
+        border-radius: 15px;
+        display: inline-block;
+      }
+
+      .vr-button {
+        background: red;
+        color: white;
+        border: none;
+        padding: 1rem 2rem;
+        font-size: 1.5rem;
+        border-radius: 10px;
+        cursor: pointer;
+        margin-top: 1rem;
+      }
+
+      .vr-button:hover {
+        background: darkred;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="overlay">
+      <h1>Enter My VR Experience</h1>
+      <p>Make sure your VR headset is on and connected for a better experience!</p>
+      <button class="vr-button" onclick="window.location.href='vr.html'">
+        Start VR
+      </button>
+    </div>
+  </body>
+</html>
