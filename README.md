@@ -1,6 +1,6 @@
 # Virtual Try-On E-Shop (Demo)
 ## Description
-This project is a web-based demo for an innovative e-commerce experience that allows users to try on clothes in Virtual Reality (VR) before purchasing.
+This project is a web-based demo for an innovative e-commerce experience that allows users to **try on clothes in Virtual Reality** (VR) before purchasing.
 It combines a traditional online shopping layout with VR technology to enhance user engagement and shopping confidence.
 
 ## Features
