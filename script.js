@@ -12,18 +12,18 @@ async function loadSpringProducts() {
   }
 }
 
-function renderSpringProducts(products) {
-  const container = document.getElementById("spring-products");
+function renderCategoryProducts(category, containerId, showAll = false) {
+  const container = document.getElementById(containerId);
 
   if (!container) {
-    console.error('Contenitore "spring-products" non trovato.');
+    console.error(`Contenitore "${containerId}" non trovato.`);
     return;
   }
 
   let hasProducts = false;
 
   for (const [id, product] of Object.entries(products)) {
-    if (product.category === "springCollection25") {
+    if (product.category === category) {
       hasProducts = true;
 
       const card = document.createElement("div");
@@ -43,14 +43,18 @@ function renderSpringProducts(products) {
         </div>
       `;
 
-      container.appendChild(card);
+      // If the page is showing all products, append all, else only show the first 6 products
+      if (showAll || container.children.length < 6) {
+        container.appendChild(card);
+      }
     }
   }
 
   if (!hasProducts) {
-    container.innerHTML = "<p>No products found for Spring 2025 Collection.</p>";
+    container.innerHTML = "<p>No products found for this category.</p>";
   }
 }
+
 
 // Funzione per il cuore (wishlist)
 function toggleHeart(button) {
