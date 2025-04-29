@@ -1,5 +1,25 @@
 let products = [];
 
+document.addEventListener("DOMContentLoaded", () => {
+  loadProducts();
+});
+
+async function loadProducts() {
+  try {
+    // Fetch the product data (assuming you have a 'products.json' file)
+    const response = await fetch('products.json'); // Replace with your actual data source
+    const data = await response.json();
+    
+    // Assign the fetched data to the products array
+    products = data;
+
+    // Now, you can render the products once they are loaded
+    renderProducts();
+  } catch (error) {
+    console.error('Error loading products:', error);
+  }
+}
+
 function renderProducts() {
   // Once products are loaded, call renderCategoryProducts for different categories
   const path = window.location.pathname;
