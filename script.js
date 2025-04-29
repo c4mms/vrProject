@@ -23,7 +23,7 @@ function renderSpringProducts(products) {
   let hasProducts = false;
 
   for (const [id, product] of Object.entries(products)) {
-    if (product.collection === "springCollection25") {
+    if (product.category === "springCollection25") {
       hasProducts = true;
 
       const card = document.createElement("div");
