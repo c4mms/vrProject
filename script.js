@@ -79,10 +79,6 @@ function renderCategoryProducts(category, containerId, showAll = false) {
       }
     }
   }
-
-  if (!hasProducts) {
-    container.innerHTML = "<p>No products found for this category.</p>";
-  }
 }
 
 
