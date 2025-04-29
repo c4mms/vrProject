@@ -1,148 +1,61 @@
-// PRODUCTS DATA
-const products = {
-  1: {
-    name: "Elegant Dress",
-    price: "$350",
-    description: "An elegant dress perfect for evening occasions.",
-    image: "img/sp1.jpg",
-    category: "springCollection25",
-    allSizes: ["XS", "S", "M", "L", "XL"],
-    availableSizes: ["S", "M", "L"],
-    vr:true
-  },
-  2: {
-    name: "Luxury Handbag",
-    price: "$490",
-    description: "A stylish handbag with premium leather finish.",
-    image: "img/sp2.jpg", 
-    category: "springCollection25",
-    allSizes: ["One Size"],
-    availableSizes: ["One Size"],
-    vr:false
+document.addEventListener("DOMContentLoaded", () => {
+  loadSpringProducts();
+});
 
-  },
-  3: {
-    name: "Valentino Handbag",
-    price: "$490",
-    description: "A timeless Valentino piece with gold accents.",
-    image: "img/sp3.jpg", 
-    category: "springCollection25",
-    allSizes: ["XS", "S", "M", "L", "XL"],
-    availableSizes: ["S", "M", "L"],
-    vr:true
-  },
-  4: {
-    name: "Campaign Handbag",
-    price: "$490",
-    description: "Featured in our 2025 spring campaign.",
-    image: "img/sp4.jpg", 
-    category: "springCollection25",
-    allSizes: ["XS", "S", "M", "L", "XL"],
-    availableSizes: ["S", "M", "L"],
-    vr:true
-  },
-  5: {
-    name: "Elegant Dress",
-    price: "$350",
-    description: "A stylish Gucci-inspired dress for luxury occasions.",
-    image: "img/sp5.jpg",
-    category: "springCollection25",
-    allSizes: ["XS", "S", "M", "L", "XL"],
-    availableSizes: ["S", "M", "L"],
-    vr:true
-  },
-  6: {
-    name: "Elegant Dress",
-    price: "$350",
-    description: "Refined silhouette with modern elegance for 2025.",
-    image: "img/sp6.jpg",
-    category: "springCollection25",
-    allSizes: ["XS", "S", "M", "L", "XL"],
-    availableSizes: ["S", "M", "L"],
-    vr:true
-  },
-  7: {
-    name: "Elegant Dress",
-    price: "$350",
-    description: "Refined silhouette with modern elegance for 2025.",
-    image: "img/w1.jpg",
-    category: "woman",
-    allSizes: ["XS", "S", "M", "L", "XL"],
-    availableSizes: ["S", "M", "L"],
-    vr:true
-  },
-  8: {
-    name: "Elegant Dress",
-    price: "$350",
-    description: "Refined silhouette with modern elegance for 2025.",
-    image: "img/w2.jpg",
-    category: "woman",
-    allSizes: ["XS", "S", "M", "L", "XL"],
-    availableSizes: ["S", "M", "L"],
-    vr:true
-  },
-  9: {
-    name: "Elegant Dress",
-    price: "$350",
-    description: "Refined silhouette with modern elegance for 2025.",
-    image: "img/w3.jpg",
-    category: "woman",
-    allSizes: ["XS", "S", "M", "L", "XL"],
-    availableSizes: ["S", "M", "L"],
-    vr:true
-  },
-  10: {
-    name: "Elegant Dress",
-    price: "$350",
-    description: "An elegant dress perfect for evening occasions.",
-    image: "img/sp1.jpg",
-    category: "springCollection25",
-    allSizes: ["XS", "S", "M", "L", "XL"],
-    availableSizes: ["S", "M", "L"],
-    vr:false
+async function loadSpringProducts() {
+  try {
+    const response = await fetch('products.json');
+    const products = await response.json();
+    renderSpringProducts(products);
+  } catch (error) {
+    console.error('Errore nel caricamento dei prodotti:', error);
   }
-};
+}
 
-// This function renders products based on the category passed to it
-function renderCategoryProducts(category, containerId, showAll = false) {
-  const container = document.getElementById(containerId);
-  if (!container) return;
+function renderSpringProducts(products) {
+  const container = document.getElementById("spring-products");
 
-  container.innerHTML = ""; // clear previous content
+  if (!container) {
+    console.error('Contenitore "spring-products" non trovato.');
+    return;
+  }
+
   let hasProducts = false;
 
-  const matchedProducts = Object.entries(products)
-    .filter(([_, product]) => product.category === category);
+  for (const [id, product] of Object.entries(products)) {
+    if (product.collection === "springCollection25") {
+      hasProducts = true;
 
-  const productsToShow = showAll ? matchedProducts : matchedProducts.slice(0, 6);
+      const card = document.createElement("div");
+      card.className = "product-card";
 
-  for (const [id, product] of productsToShow) {
-    hasProducts = true;
+      const vrButton = product.vr ? `<button class="vr-button">Try in VR</button>` : "";
 
-    const card = document.createElement("div");
-    card.className = "product-card";
+      card.innerHTML = `
+        <a href="product.html?id=${id}" class="product-link">
+          <div class="product-image" style="background-image: url('${product.image}')"></div>
+          <div class="product-name">${product.name}</div>
+          <div class="product-price">${product.price}</div>
+        </a>
+        <div class="product-buttons">
+          <button class="heart-button" onclick="toggleHeart(this)">♡</button>
+          ${vrButton}
+        </div>
+      `;
 
-    const vrButton = product.vr ? `<button class="vr-button">Try in VR</button>` : "";
-
-    card.innerHTML = `
-      <a href="product.html?id=${id}" class="product-link">
-        <div class="product-image" style="background-image: url('${product.image}')"></div>
-        <div class="product-name">${product.name}</div>
-        <div class="product-price">${product.price}</div>
-      </a>
-      <div class="product-buttons">
-        <button class="heart-button" onclick="toggleHeart(this)">♡</button>
-        ${vrButton}
-      </div>
-    `;
-
-    container.appendChild(card);
+      container.appendChild(card);
+    }
   }
 
-  // If no products were found, display a message indicating no products are available for that category
   if (!hasProducts) {
-    container.innerHTML = "<p>No products available in this category at the moment. Check back later!</p>";
+    container.innerHTML = "<p>No products found for Spring 2025 Collection.</p>";
   }
+}
+
+// Funzione per il cuore (wishlist)
+function toggleHeart(button) {
+  button.classList.toggle('hearted');
+  button.textContent = button.classList.contains('hearted') ? '♥' : '♡';
 }
 
 document.addEventListener("DOMContentLoaded", () => {
