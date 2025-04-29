@@ -1,49 +1,83 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Welcome to My VR World</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Enter VR Experience</title>
     <style>
-      body {
-        margin: 0;
-        background: black;
-        color: white;
-        font-family: sans-serif;
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        height: 100vh;
-        /*background-image: url('assets/your-splash-image.jpg'); /* Optional image */
-        background-size: cover;
-        background-position: center;
-      }
+      /* General page settings */
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #e6cee0; /* crème color */
+  color: #000;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+}
 
-      .overlay {
-        background-color: rgba(0, 0, 0, 0.7);
-        padding: 2rem;
-        border-radius: 15px;
-        display: inline-block;
-      }
+/* The white-transparent box */
+.overlay {
+  background-color: rgba(255, 255, 255, 0.85);
+  padding: 3rem;
+  border-radius: 20px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+}
 
-      .vr-button {
-        background: red;
-        color: white;
-        border: none;
-        padding: 1rem 2rem;
-        font-size: 1.5rem;
-        border-radius: 10px;
-        cursor: pointer;
-        margin-top: 1rem;
-      }
+/* Main title */
+.overlay h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.8rem;
+  margin-bottom: 1.5rem;
+}
 
-      .vr-button:hover {
-        background: darkred;
-      }
-    </style>
-  </head>
+/* Description paragraph */
+.overlay p {
+  font-size: 1.2rem;
+  color: #555;
+}
+
+/* Start VR Button */
+.vr-button {
+  background: #000; /* Black button */
+  color: white;
+  border: none;
+  padding: 1rem 3rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  border-radius: 50px;
+  cursor: pointer;
+  margin-top: 2rem;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+/* Button hover: turns pink */
+.vr-button:hover {
+  background:  #ff1493; /* Light pink on hover */
+  transform: scale(1.05);
+}
+
+
+/* Optional: a subtle fade-in animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.overlay {
+  animation: fadeIn 3s ease;
+}
+
+    </style> </head>
   <body>
     <div class="overlay">
-      <h1>Enter My VR Experience</h1>
+      <h1>Enter VR Experience</h1>
       <p>Make sure your VR headset is on and connected for a better experience!</p>
       <button class="vr-button" onclick="window.location.href='vr.html'">
         Start VR
