@@ -1,5 +1,115 @@
-let products = [];
-
+let products = [
+  "1": {
+    "id": 1,
+    "name": "DOWN JACKET",
+    "price": "790€",
+    "description": "Jacket is crafted from a technical down nylon with a garment-dyed finish. Detailed with a logo embroidery on the chest. Complete with a centre-front zipper closure. Cut to a fitted fit and below waist length. - Fitted fit - Below waist length - Acne Studios logo embroidery - Centre front zipper closure and snap button - Front and internal pockets - Model is 188 cm / 6'2 and wears a size 46 - Style ID: FN-MN-OUTW001135 - Shell: 100% Nylon, Lining: 100% Recycled nylon, Filling: 90% Recycled down, 10%  Recycled feathers",
+    "image": "img/m1.jpg",
+    "category": "man",
+    "allSizes": ["XS", "S", "M", "L", "XL"],
+    "availableSizes": ["XS", "M", "L"],
+    "vr": true
+  },
+  "2":{
+    "id": 2,
+    "name": "ABITO LINEA SOHO MONOPETTO IN SAGLIA DI LANA",
+    "price": "2100€",
+    "description": "Sofisticato abito della linea Soho che coniuga i dettagli della tradizione sartoriale con tessuti ricercati e pregiati che sottolineano l'immagine contemporanea del capo.\nQuesto modello realizzato in saglia di lana vergine water repellent si compone di una giacca monopetto con revers a specchio e tasche a filetto, abbinate a un pantalone flat front dalla vestibilità confortevole.\nUna proposta dall'eleganza senza tempo, indispensabile nel guardaroba dell'uomo elegante.\nGiacca tess. principale: 100% lana vergine; giacca fodera principale: 100% cupro;\npantaloni tess. principale: 100% lana vergine; fodera ginocchiera pantaloni: 63% acetato, 37% viscosa.\n- Abito Linea Soho\n- Giacca monopetto a due bottoni\n- Collo con revers a specchio\n- Due tasche a filetto\n- Un taschino a filetto sul petto\n- Spacchi laterali\n- Foderata\n- Lunghezza giacca: 73,5 cm\n- Pantaloni flat front\n- Cinturino con passanti\n- Chiusura con bottone e zip\n- Due tasche a filetto\n- Due tasche a filetto sul retro\n- Larghezza fondo pantaloni: 19 cm\n- Made in Italy",
+    "image": "img/w1.jpg",
+    "category": "woman",
+    "allSizes": ["One Size"],
+    "availableSizes": ["One Size"],
+    "vr": false
+  },
+  "3":{
+    "id": 3,
+    "name": "Erbe Trucket Jacket",
+    "price": "2250€ ",
+    "description": "Erbe Trucket Jacket - Black - Grained Leather - Collar - Removable Signature Grosgrain Ribbon - Button Closure - Button Flap Chest Pockets - Side Pockets - Buttoned Cuffs - Fitted - 100% Sheep Leather - Made in Italy",
+    "image": "img/m3.jpg",
+    "category": "man",
+    "allSizes": ["XS", "S", "M", "L", "XL"],
+    "availableSizes": ["S", "M", "L"],
+    "vr": true
+  },
+  "4":{
+    "id": 4,
+    "name": "Campaign Handbag",
+    "price": "$490",
+    "description": "Featured in our 2025 spring campaign.",
+    "image": "img/sp4.jpg",
+    "category": "springCollection25",
+    "allSizes": ["XS", "S", "M", "L", "XL"],
+    "availableSizes": ["S", "M", "L"],
+    "vr": true
+  },
+  "5":{
+    "id": 5,
+    "name": "Elegant Dress",
+    "price": "$350",
+    "description": "A stylish Gucci-inspired dress for luxury occasions.",
+    "image": "img/sp5.jpg",
+    "category": "springCollection25",
+    "allSizes": ["XS", "S", "M", "L", "XL"],
+    "availableSizes": ["S", "M", "L"],
+    "vr": true
+  },
+  "6":{
+    "id": 6,
+    "name": "Elegant Dress",
+    "price": "$350",
+    "description": "Refined silhouette with modern elegance for 2025.",
+    "image": "img/sp6.jpg",
+    "category": "springCollection25",
+    "allSizes": ["XS", "S", "M", "L", "XL"],
+    "availableSizes": ["S", "M", "L"],
+    "vr": true
+  },
+  "7":{
+    "id": 7,
+    "name": "Elegant Dress",
+    "price": "$350",
+    "description": "Refined silhouette with modern elegance for 2025.",
+    "image": "img/w1.jpg",
+    "category": "woman",
+    "allSizes": ["XS", "S", "M", "L", "XL"],
+    "availableSizes": ["S", "M", "L"],
+    "vr": true
+  },
+  "8":{
+    "id": 8,
+    "name": "Elegant Dress",
+    "price": "$350",
+    "description": "Refined silhouette with modern elegance for 2025.",
+    "image": "img/w2.jpg",
+    "category": "woman",
+    "allSizes": ["XS", "S", "M", "L", "XL"],
+    "availableSizes": ["S", "M", "L"],
+    "vr": true
+  },
+  "9":{
+    "id": 9,
+    "name": "Elegant Dress",
+    "price": "$350",
+    "description": "Refined silhouette with modern elegance for 2025.",
+    "image": "img/w3.jpg",
+    "category": "woman",
+    "allSizes": ["XS", "S", "M", "L", "XL"],
+    "availableSizes": ["S", "M", "L"],
+    "vr": true
+  },
+  "10":{
+    "id": 10,
+    "name": "Elegant Dress",
+    "price": "$350",
+    "description": "An elegant dress perfect for evening occasions.",
+    "image": "img/sp1.jpg",
+    "category": "springCollection25",
+    "allSizes": ["XS", "S", "M", "L", "XL"],
+    "availableSizes": ["S", "M", "L"],
+    "vr": false
+  }
+]
 document.addEventListener("DOMContentLoaded", () => {
   loadProducts();
 });
