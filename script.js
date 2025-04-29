@@ -110,20 +110,8 @@ let products = [
     "vr": false
   }
 ]
-document.addEventListener("DOMContentLoaded", () => {
-  loadProducts();
-});
-// Load products from JSON
-async function loadProducts() {
-  try {
-    // Fetch the product data (assuming you have a 'products.json' file)
-    const response = await fetch('products.json'); // Replace with your actual data source
-    const data = await response.json();
-    
-    // Assign the fetched data to the products array
-    products = data;
 
-    renderProducts();// This renders the collections (woman, man, etc.)
+renderProducts();// This renders the collections (woman, man, etc.)
     //if we are on a single product page
     if (document.querySelector('.product-detail')) {
       renderProductDetail();
