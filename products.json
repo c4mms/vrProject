@@ -1,5 +1,5 @@
 [
-  {
+  "1": {
     "id": 1,
     "name": "DOWN JACKET",
     "price": "790€",
@@ -10,7 +10,7 @@
     "availableSizes": ["XS", "M", "L"],
     "vr": true
   },
-  {
+  "2":{
     "id": 2,
     "name": "ABITO LINEA SOHO MONOPETTO IN SAGLIA DI LANA",
     "price": "2100€",
@@ -21,7 +21,7 @@
     "availableSizes": ["One Size"],
     "vr": false
   },
-  {
+  "3":{
     "id": 3,
     "name": "Erbe Trucket Jacket",
     "price": "2250€ ",
@@ -32,7 +32,7 @@
     "availableSizes": ["S", "M", "L"],
     "vr": true
   },
-  {
+  "4":{
     "id": 4,
     "name": "Campaign Handbag",
     "price": "$490",
@@ -43,7 +43,7 @@
     "availableSizes": ["S", "M", "L"],
     "vr": true
   },
-  {
+  "5":{
     "id": 5,
     "name": "Elegant Dress",
     "price": "$350",
@@ -54,7 +54,7 @@
     "availableSizes": ["S", "M", "L"],
     "vr": true
   },
-  {
+  "6":{
     "id": 6,
     "name": "Elegant Dress",
     "price": "$350",
@@ -65,7 +65,7 @@
     "availableSizes": ["S", "M", "L"],
     "vr": true
   },
-  {
+  "7":{
     "id": 7,
     "name": "Elegant Dress",
     "price": "$350",
@@ -76,7 +76,7 @@
     "availableSizes": ["S", "M", "L"],
     "vr": true
   },
-  {
+  "8":{
     "id": 8,
     "name": "Elegant Dress",
     "price": "$350",
@@ -87,7 +87,7 @@
     "availableSizes": ["S", "M", "L"],
     "vr": true
   },
-  {
+  "9":{
     "id": 9,
     "name": "Elegant Dress",
     "price": "$350",
@@ -98,7 +98,7 @@
     "availableSizes": ["S", "M", "L"],
     "vr": true
   },
-  {
+  "10":{
     "id": 10,
     "name": "Elegant Dress",
     "price": "$350",
