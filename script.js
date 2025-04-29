@@ -1,14 +1,24 @@
-document.addEventListener("DOMContentLoaded", () => {
-  loadSpringProducts();
-});
+let products = [];
 
-async function loadSpringProducts() {
-  try {
-    const response = await fetch('products.json');
-    const products = await response.json();
-    renderSpringProducts(products);
-  } catch (error) {
-    console.error('Errore nel caricamento dei prodotti:', error);
+function renderProducts() {
+  // Once products are loaded, call renderCategoryProducts for different categories
+  const path = window.location.pathname;
+
+  if (document.getElementById("spring-products")) {
+    const showAll = path.includes("collection2025.html");
+    renderCategoryProducts("springCollection25", "spring-products", showAll);
+  }
+
+  if (document.getElementById("woman-products")) {
+    renderCategoryProducts("woman", "woman-products");
+  }
+
+  if (document.getElementById("man-products")) {
+    renderCategoryProducts("man", "man-products");
+  }
+
+  if (document.getElementById("bags-products")) {
+    renderCategoryProducts("bags", "bags-products");
   }
 }
 
