@@ -108,7 +108,63 @@ let products = {
     "allSizes": ["XS", "S", "M", "L", "XL"],
     "availableSizes": ["S", "M", "L"],
     "vr": false
+  },
+   "11":{
+    "id": 11,
+    "name": "Elegant Dress",
+    "price": "$450",
+    "description": "An elegant dress perfect for evening occasions.",
+    "image": "img/sp1.jpg",
+    "category": "springCollection25",
+    "allSizes": ["XS", "S", "M", "L", "XL"],
+    "availableSizes": ["S", "M", "L"],
+    "vr": false
+  },
+   "12":{
+    "id": 12,
+    "name": "Elegant Dress",
+    "price": "$370",
+    "description": "An elegant dress perfect for evening occasions.",
+    "image": "img/sp1.jpg",
+    "category": "springCollection25",
+    "allSizes": ["XS", "S", "M", "L", "XL"],
+    "availableSizes": ["S", "M", "L"],
+    "vr": false
+  },
+   "13":{
+    "id": 13,
+    "name": "Elegant Dress",
+    "price": "$350",
+    "description": "An elegant dress perfect for evening occasions.",
+    "image": "img/sp1.jpg",
+    "category": "springCollection25",
+    "allSizes": ["XS", "S", "M", "L", "XL"],
+    "availableSizes": ["S", "M", "L"],
+    "vr": false
+  },
+   "14":{
+    "id": 14,
+    "name": "Elegant Dress",
+    "price": "$340",
+    "description": "An elegant dress perfect for evening occasions.",
+    "image": "img/sp1.jpg",
+    "category": "springCollection25",
+    "allSizes": ["XS", "S", "M", "L", "XL"],
+    "availableSizes": ["S", "M", "L"],
+    "vr": false
+  },
+   "15":{
+    "id": 15,
+    "name": "Elegant Dress",
+    "price": "$650",
+    "description": "An elegant dress perfect for evening occasions.",
+    "image": "img/sp1.jpg",
+    "category": "springCollection25",
+    "allSizes": ["XS", "S", "M", "L", "XL"],
+    "availableSizes": ["S", "M", "L"],
+    "vr": false
   }
+  
 }
 
 renderProducts();// This renders the collections (woman, man, etc.)
