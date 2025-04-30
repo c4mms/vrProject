@@ -98,73 +98,67 @@ let products = {
     "availableSizes": ["S", "M", "L"],
     "vr": true
   },
-  "10":{
+{
+  "10": {
     "id": 10,
-    "name": "Elegant Dress",
-    "price": "$350",
-    "description": "An elegant dress perfect for evening occasions.",
+    "name": "Blossom Gown",
+    "price": "$390",
+    "description": "A delicate gown inspired by the first blooms of spring.",
     "image": "img/sp1.jpg",
     "category": "springCollection25",
-    "allSizes": ["XS", "S", "M", "L", "XL"],
-    "availableSizes": ["S", "M", "L"],
-    "vr": false
+    "allSizes": ["XS", "S", "M", "L"],
+    "availableSizes": ["S", "M", "L"]
   },
-   "11":{
+  "11": {
     "id": 11,
-    "name": "Elegant Dress",
-    "price": "$450",
-    "description": "An elegant dress perfect for evening occasions.",
+    "name": "Sunrise Midi Dress",
+    "price": "$420",
+    "description": "Elegant midi dress with flowing lines and soft colors.",
     "image": "img/sp1.jpg",
     "category": "springCollection25",
     "allSizes": ["XS", "S", "M", "L", "XL"],
-    "availableSizes": ["S", "M", "L"],
-    "vr": false
+    "availableSizes": ["M", "L"]
   },
-   "12":{
+  "12": {
     "id": 12,
-    "name": "Elegant Dress",
+    "name": "Rose Petal Slip",
     "price": "$370",
-    "description": "An elegant dress perfect for evening occasions.",
+    "description": "A soft slip dress with rose petal detailing, ideal for garden parties.",
     "image": "img/sp1.jpg",
     "category": "springCollection25",
-    "allSizes": ["XS", "S", "M", "L", "XL"],
-    "availableSizes": ["S", "M", "L"],
-    "vr": false
+    "allSizes": ["XS", "S", "M", "L"],
+    "availableSizes": ["XS", "S", "M"]
   },
-   "13":{
+  "13": {
     "id": 13,
-    "name": "Elegant Dress",
-    "price": "$350",
-    "description": "An elegant dress perfect for evening occasions.",
+    "name": "Golden Hour Dress",
+    "price": "$360",
+    "description": "Flowy evening dress capturing the magic of golden hour.",
     "image": "img/sp1.jpg",
     "category": "springCollection25",
-    "allSizes": ["XS", "S", "M", "L", "XL"],
-    "availableSizes": ["S", "M", "L"],
-    "vr": false
+    "allSizes": ["S", "M", "L", "XL"],
+    "availableSizes": ["S", "M"]
   },
-   "14":{
+  "14": {
     "id": 14,
-    "name": "Elegant Dress",
+    "name": "Pastel Dream Dress",
     "price": "$340",
-    "description": "An elegant dress perfect for evening occasions.",
+    "description": "Light pastel dress, perfect for sunny spring days.",
     "image": "img/sp1.jpg",
     "category": "springCollection25",
     "allSizes": ["XS", "S", "M", "L", "XL"],
-    "availableSizes": ["S", "M", "L"],
-    "vr": false
+    "availableSizes": ["S", "L"]
   },
-   "15":{
+  "15": {
     "id": 15,
-    "name": "Elegant Dress",
-    "price": "$650",
-    "description": "An elegant dress perfect for evening occasions.",
+    "name": "Velvet Garden Dress",
+    "price": "$660",
+    "description": "Luxurious velvet dress adorned with floral embroidery.",
     "image": "img/sp1.jpg",
     "category": "springCollection25",
-    "allSizes": ["XS", "S", "M", "L", "XL"],
-    "availableSizes": ["S", "M", "L"],
-    "vr": false
+    "allSizes": ["XS", "S", "M"],
+    "availableSizes": ["S", "M"]
   }
-  
 }
 
 renderProducts();// This renders the collections (woman, man, etc.)
