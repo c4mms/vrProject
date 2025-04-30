@@ -112,14 +112,15 @@ let products = {
 }
 
 renderProducts();// This renders the collections (woman, man, etc.)
-    //if we are on a single product page
+try{    
+//if we are on a single product page
     if (document.querySelector('.product-detail')) {
       renderProductDetail();
     }
   } catch (error) {
     console.error('Error loading products:', error);
   }
-}
+
 // Render category pages
 function renderProducts() {
   const path = window.location.pathname;
