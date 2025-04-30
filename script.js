@@ -98,7 +98,6 @@ let products = {
     "availableSizes": ["S", "M", "L"],
     "vr": true
   },
-{
   "10": {
     "id": 10,
     "name": "Blossom Gown",
