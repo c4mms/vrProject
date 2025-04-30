@@ -47,6 +47,9 @@ If you want to run the project locally:
 - **Blender**: Used to create the 3D clothing models displayed in the VR try-on feature.
 - **Meta Quest 2**: Recommended for the best VR experience. 
 - **Supported Browsers**: The VR feature works in WebXR-compatible browsers like **Google Chrome** and **Mozilla Firefox**.
+  
+# Download the 3D Model
+You can download the 3D model here: [Showroom.glb](https://drive.google.com/file/d/1IjhwFi9HTBL5jwb2elDkyahcenAn4TJO/view?usp=drive_link)
 
 
 ## Future Improvements (Ideas)
