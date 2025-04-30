@@ -1,4 +1,4 @@
-let products = [
+let products = {
   "1": {
     "id": 1,
     "name": "DOWN JACKET",
@@ -109,7 +109,7 @@ let products = [
     "availableSizes": ["S", "M", "L"],
     "vr": false
   }
-]
+}
 
 renderProducts();// This renders the collections (woman, man, etc.)
     //if we are on a single product page
