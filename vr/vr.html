@@ -12,14 +12,11 @@
         <a-asset-item id="showroom-model" src="https://showroomcd.s3.amazonaws.com/showroom.glb"></a-asset-item>
       </a-assets>
 
-      <!-- Create a ground plane for reference -->
-      <a-plane position="0 0 0" rotation="-90 0 0" width="50" height="50" color="#7BC8A4"></a-plane>
-
       <!-- Move the model up -->
-      <a-entity gltf-model="#showroom-model" position="0 2 -5" scale="1 1 1"></a-entity>
+      <a-entity gltf-model="#showroom-model" position="0 0 0" scale="1 1 1"></a-entity>
 
       <!-- Adjust the camera position higher and further away -->
-      <a-camera position="0 2 4"></a-camera>
+      <a-camera position="0 1.6 0"></a-camera>
     </a-scene>
   </body>
 </html>
