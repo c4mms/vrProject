@@ -8,6 +8,7 @@
   <body>
     <a-scene vr-mode-ui="enabled: true">
       <a-assets timeout="20000">
+        <!-- Load the GLB model directly from S3 -->
         <a-asset-item id="showroom-model" src="https://showroomcd.s3.amazonaws.com/showroom.glb"></a-asset-item>
       </a-assets>
 
@@ -21,8 +22,8 @@
       <!-- 3D model -->
       <a-entity gltf-model="#showroom-model" position="0 0 0" scale="0.8 0.8 0.8"></a-entity>
 
-      <!-- Camera rig -->
-      <a-entity id="rig" movement-controls position="0 1.6 5">
+      <!-- Camera rig (positioned 1.6 meters above the ground) -->
+      <a-entity id="rig" movement-controls position="0 1.6 10">
         <a-entity camera look-controls wasd-controls></a-entity>
       </a-entity>
     </a-scene>
