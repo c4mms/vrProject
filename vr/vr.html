@@ -8,16 +8,18 @@
   <body>
     <a-scene>
       <a-assets timeout="20000">
-        <!-- Carica il modello GLB direttamente da S3 -->
+        <!-- Load the GLB model directly from S3 -->
         <a-asset-item id="showroom-model" src="https://showroomcd.s3.amazonaws.com/showroom.glb"></a-asset-item>
       </a-assets>
 
-      <!-- Aggiungi il modello 3D alla scena -->
-      <a-entity gltf-model="#showroom-model" position="0 0 0" scale="0.5 0.5 0.5"></a-entity>
+      <!-- Create a ground plane for reference -->
+      <a-plane position="0 0 0" rotation="-90 0 0" width="50" height="50" color="#7BC8A4"></a-plane>
 
-      <!-- Aggiungi la telecamera per l'interazione -->
-      <a-camera position="0 3 -2"></a-camera>
+      <!-- Move the model up -->
+      <a-entity gltf-model="#showroom-model" position="0 2 -5" scale="1 1 1"></a-entity>
+
+      <!-- Adjust the camera position higher and further away -->
+      <a-camera position="0 2 4"></a-camera>
     </a-scene>
   </body>
 </html>
-
