@@ -6,17 +6,25 @@
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
   </head>
   <body>
-    <a-scene>
+    <a-scene vr-mode-ui="enabled: true">
       <a-assets timeout="20000">
-        <!-- Load the GLB model directly from S3 -->
         <a-asset-item id="showroom-model" src="https://showroomcd.s3.amazonaws.com/showroom.glb"></a-asset-item>
       </a-assets>
 
-      <!-- Move the model up -->
-      <a-entity gltf-model="#showroom-model" position="0 0 0" scale="1 1 1"></a-entity>
+      <!-- Lighting -->
+      <a-entity light="type: ambient; color: #ffffff; intensity: 0.7"></a-entity>
+      <a-entity light="type: directional; intensity: 0.5" position="1 3 2"></a-entity>
 
-      <!-- Adjust the camera position higher and further away -->
-      <a-camera position="0 1.6 0"></a-camera>
+      <!-- Ground (just for testing) -->
+      <a-plane rotation="-90 0 0" width="100" height="100" color="#ccc"></a-plane>
+
+      <!-- 3D model -->
+      <a-entity gltf-model="#showroom-model" position="0 0 0" scale="0.01 0.01 0.01"></a-entity>
+
+      <!-- Camera rig -->
+      <a-entity id="rig" movement-controls position="0 1.6 10">
+        <a-entity camera look-controls wasd-controls></a-entity>
+      </a-entity>
     </a-scene>
   </body>
 </html>
