@@ -9,7 +9,8 @@
     <a-scene>
       <a-assets timeout="20000">
         <!-- Carica il modello GLB direttamente da S3 -->
-        <a-asset-item id="showroom-model" src="https://showroomcd.s3.eu-north-1.amazonaws.com/Showroom.glb" </a-assets>
+        <a-asset-item id="showroom-model" src="https://showroomcd.s3.amazonaws.com/showroom.glb"></a-asset-item>
+      </a-assets>
 
       <!-- Aggiungi il modello 3D alla scena -->
       <a-entity gltf-model="#showroom-model" position="0 1.5 -3" scale="1 1 1"></a-entity>
@@ -19,3 +20,4 @@
     </a-scene>
   </body>
 </html>
+
