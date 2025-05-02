@@ -1,91 +1,57 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Teletrasporto e Rotazione VR con A-Frame (Debug)</title>
-    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
-    <script>
-        AFRAME.registerComponent('teleport-controls', {
-            init: function () {
-                const el = this.el;
-                const sceneEl = this.el.sceneEl;
+AFRAME.registerComponent('teleport-controls', {
+    init: function () {
+        const el = this.el;
+        const sceneEl = this.el.sceneEl;
 
-                el.setAttribute('laser-controls', { hand: 'right' });
-                el.setAttribute('raycaster', {
-                    objects: '.teleportable',
-                    far: 10,
-                    interval: 0,
-                    showLine: true
-                });
+        el.setAttribute('laser-controls', { hand: 'right' });
+        el.setAttribute('raycaster', {
+            objects: '.teleportable',
+            far: 10,
+            interval: 0,
+            showLine: true
+        });
 
-                this.teleportCircle = document.createElement('a-entity');
-                this.teleportCircle.setAttribute('geometry', { primitive: 'circle', radius: 0.5 }); // Raggio ridotto
-                this.teleportCircle.setAttribute('material', { color: 'blue', shader: 'flat', transparent: true, opacity: 0.5 });
-                this.teleportCircle.setAttribute('rotation', '-90 0 0');
+        this.teleportCircle = document.createElement('a-entity');
+        this.teleportCircle.setAttribute('geometry', { primitive: 'circle', radius: 0.5 });
+        this.teleportCircle.setAttribute('material', { color: 'blue', shader: 'flat', transparent: true, opacity: 0.5 });
+        this.teleportCircle.setAttribute('rotation', '-90 0 0');
+        this.teleportCircle.setAttribute('visible', false);
+        sceneEl.appendChild(this.teleportCircle);
+
+        this.intersectionPoint = new THREE.Vector3(); // Usiamo un Vector3 per memorizzare il punto
+
+        el.addEventListener('raycaster-intersection', (event) => {
+            if (event.detail.els.length > 0 && event.detail.els[0].classList.contains('teleportable')) {
+                this.intersectionPoint.copy(event.detail.intersections[0].point);
+                this.teleportCircle.setAttribute('visible', true);
+                this.teleportCircle.setAttribute('position', this.intersectionPoint);
+            } else {
                 this.teleportCircle.setAttribute('visible', false);
-                sceneEl.appendChild(this.teleportCircle);
-
-                this.intersectionPoint = null; // Variabile per memorizzare il punto di intersezione
-
-                el.addEventListener('raycaster-intersection', (event) => {
-                    if (event.detail.els.length > 0 && event.detail.els[0].classList.contains('teleportable')) {
-                        this.intersectionPoint = event.detail.intersections[0].point;
-                        this.teleportCircle.setAttribute('visible', true);
-                        this.teleportCircle.setAttribute('position', this.intersectionPoint);
-
-                        // Messaggio di debug (apri la console del browser per vederlo)
-                        console.log('Punto di intersezione:', this.intersectionPoint);
-                    } else {
-                        this.teleportCircle.setAttribute('visible', false);
-                        this.intersectionPoint = null;
-                    }
-                });
-
-                el.addEventListener('raycaster-intersectioncleared', () => {
-                    this.teleportCircle.setAttribute('visible', false);
-                    this.intersectionPoint = null;
-                });
-
-                el.addEventListener('triggerdown', () => {
-                    if (this.teleportCircle.getAttribute('visible') && this.intersectionPoint) {
-                        const cameraRig = sceneEl.querySelector('#cameraRig');
-                        const headPosition = sceneEl.querySelector('#camera').getAttribute('position');
-
-                        cameraRig.setAttribute('position', {
-                            x: this.intersectionPoint.x - headPosition.x,
-                            y: cameraRig.getAttribute('position').y,
-                            z: this.intersectionPoint.z - headPosition.z
-                        });
-                    }
-                });
             }
         });
 
-        AFRAME.registerComponent('joystick-rotation', {
-            init: function () {
-                const el = this.el;
-                const cameraRig = el.parentNode;
+        el.addEventListener('raycaster-intersectioncleared', () => {
+            this.teleportCircle.setAttribute('visible', false);
+        });
 
-                el.addEventListener('axismove', (event) => {
-                    const joystickX = event.detail.axis[2];
+        el.tick = function () { // Funzione tick per aggiornare ad ogni frame
+            if (this.el.components.raycaster && this.el.components.raycaster.intersectedEls.length > 0 && this.el.components.raycaster.intersectedEls[0].classList.contains('teleportable')) {
+                const intersection = this.el.components.raycaster.intersections[0].point;
+                this.teleportCircle.setAttribute('position', intersection);
+            }
+        };
 
-                    if (Math.abs(joystickX) > 0.1) {
-                        cameraRig.object3D.rotation.y -= joystickX * 0.02;
-                    }
+        el.addEventListener('triggerdown', () => {
+            if (this.teleportCircle.getAttribute('visible')) {
+                const cameraRig = sceneEl.querySelector('#cameraRig');
+                const headPosition = sceneEl.querySelector('#camera').getAttribute('position');
+
+                cameraRig.setAttribute('position', {
+                    x: this.intersectionPoint.x - headPosition.x,
+                    y: cameraRig.getAttribute('position').y,
+                    z: this.intersectionPoint.z - headPosition.z
                 });
             }
         });
-    </script>
-</head>
-<body>
-    <a-scene>
-        <a-entity id="cameraRig" position="0 0 0">
-            <a-entity id="camera" camera position="0 1.6 0" look-controls></a-entity>
-            <a-entity id="rightHand" teleport-controls joystick-rotation></a-entity>
-            <a-entity id="leftHand" laser-controls="hand: left" raycaster="objects: .teleportable; far: 10; showLine: true"></a-entity>
-        </a-entity>
-
-        <a-plane class="teleportable" position="0 0 -4" rotation="-90 0 0" width="10" height="10" color="#7BC8A4"></a-plane>
-        <a-sky color="#ECECEC"></a-sky>
-    </a-scene>
-</body>
-</html>
+    }
+});
