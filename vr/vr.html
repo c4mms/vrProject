@@ -1,77 +1,106 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Teletrasporto e Rotazione VR con A-Frame (Debug)</title>
+    <title>Showroom</title>
     <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
     <script>
-AFRAME.registerComponent('teleport-controls', {
-    schema: {},
-
+        AFRAME.registerComponent('teleport-controls', {
     init: function () {
         const el = this.el;
-        const sceneEl = el.sceneEl;
+        const sceneEl = this.el.sceneEl;
+        const teleportTarget = sceneEl.querySelector('[teleport-target]'); // Ottieni il reticolo
 
         el.setAttribute('laser-controls', { hand: 'right' });
         el.setAttribute('raycaster', {
             objects: '.teleportable',
             far: 10,
-            interval: 0, // forza aggiornamento continuo
+            interval: 0,
             showLine: true
         });
 
-        this.teleportCircle = document.createElement('a-entity');
-        this.teleportCircle.setAttribute('geometry', { primitive: 'circle', radius: 0.5 });
-        this.teleportCircle.setAttribute('material', { color: 'blue', shader: 'flat', transparent: true, opacity: 0.5 });
-        this.teleportCircle.setAttribute('rotation', '-90 0 0');
-        this.teleportCircle.setAttribute('visible', false);
-        sceneEl.appendChild(this.teleportCircle);
+        this.intersectionPoint = new THREE.Vector3();
 
-        this.intersectionPoint = null;
-    },
+        el.addEventListener('raycaster-intersection', (event) => {
+            if (event.detail.els.length > 0 && event.detail.els[0].classList.contains('teleportable')) {
+                this.intersectionPoint.copy(event.detail.intersections[0].point);
+                teleportTarget.setAttribute('visible', true);
+                teleportTarget.setAttribute('position', this.intersectionPoint);
+            } else {
+                teleportTarget.setAttribute('visible', false);
+            }
+        });
 
-    tick: function () {
-        const raycaster = this.el.components.raycaster;
-        if (!raycaster) return;
+        el.addEventListener('raycaster-intersectioncleared', () => {
+            teleportTarget.setAttribute('visible', false);
+        });
 
-        const intersections = raycaster.intersections;
-        if (intersections.length > 0 && intersections[0].object.el.classList.contains('teleportable')) {
-            const point = intersections[0].point;
-            this.intersectionPoint = point;
-            this.teleportCircle.setAttribute('visible', true);
-            this.teleportCircle.setAttribute('position', point);
-        } else {
-            this.teleportCircle.setAttribute('visible', false);
-            this.intersectionPoint = null;
-        }
-    },
-
-    events: {
-        triggerdown: function () {
-            if (this.intersectionPoint) {
-                const cameraRig = this.el.sceneEl.querySelector('#cameraRig');
-                const headPosition = this.el.sceneEl.querySelector('#camera').getAttribute('position');
+        el.addEventListener('triggerdown', () => {
+            if (teleportTarget.getAttribute('visible')) {
+                const cameraRig = sceneEl.querySelector('#rig');
+                const headPosition = sceneEl.querySelector('#head').getAttribute('position');
+                const targetPosition = teleportTarget.getAttribute('position');
 
                 cameraRig.setAttribute('position', {
-                    x: this.intersectionPoint.x - headPosition.x,
+                    x: targetPosition.x - headPosition.x,
                     y: cameraRig.getAttribute('position').y,
-                    z: this.intersectionPoint.z - headPosition.z
+                    z: targetPosition.z - headPosition.z
                 });
             }
-        }
+        });
     }
 });
     </script>
 </head>
 <body>
-    <a-scene>
-        <a-entity id="cameraRig" position="0 0 0">
-            <a-entity id="camera" camera position="0 1.6 0" look-controls></a-entity>
-            <a-entity id="rightHand" teleport-controls joystick-rotation></a-entity>
-            <a-entity id="leftHand" laser-controls="hand: left" raycaster="objects: .teleportable; far: 10; showLine: true"></a-entity>
-        </a-entity>
+  <a-scene vr-mode-ui="enabled: true" physics="debug: true">
+      <a-assets timeout="20000">
+        <!-- Load the GLB model directly from S3 -->
+        <a-asset-item id="showroom-model" src="https://showroomcd.s3.amazonaws.com/showroom.glb"></a-asset-item>
+      </a-assets>
 
-        <a-plane class="teleportable" position="0 0 -4" rotation="-90 0 0" width="10" height="10" color="#7BC8A4"></a-plane>
-        <a-sky color="#ECECEC"></a-sky>
-    </a-scene>
-</body>
+      <!-- Lighting -->
+      <a-entity light="type: ambient; color: #ffffff; intensity: 0.7"></a-entity>
+      <a-entity light="type: directional; intensity: 0.5" position="1 3 2"></a-entity>
+
+      <!-- Ground (teleportable and static) -->
+      <a-plane position="0 0 0" rotation="-90 0 0" width="500" height="500"
+         color="#7BC8A4"
+         class="teleportable"
+         static-body
+         nav-mesh></a-plane> 
+     
+      <!-- 3D model -->
+      <a-entity gltf-model="#showroom-model" position="0 0 0" scale="0.8 0.8 0.8" dynamic-body></a-entity>
+
+      <!-- Camera rig with teleportation controls -->
+      <a-entity id="rig" position="0 20 40">
+        
+      <!-- Camera (user's head) -->
+      <a-entity id="head" camera position="0 1.6 0" look-controls></a-entity>
+      
+      <!-- Left Controller -->
+      <a-entity laser-controls="hand: left" raycaster="objects: .teleportable"></a-entity>
+      
+      <!-- Right Controller (with teleport arc and cursor for feedback) -->
+     <a-entity id="rightHand"
+          laser-controls="hand: right"
+          raycaster="objects: .teleportable"
+          line="color: #00f; opacity: 0.8"
+          teleport-controls
+          joystick-rotation> <a-entity geometry="primitive: ring; radiusInner: 0.2; radiusOuter: 0.25"
+            material="color: #39BB82; shader: flat"
+            position="0 0 -1"
+            visible="false"
+            teleport-target></a-entity>
+    </a-entity>
+          
+      <!-- Reticle visivo per la destinazione del teletrasporto -->
+      <a-entity geometry="primitive: ring; radiusInner: 0.2; radiusOuter: 0.25"
+                material="color: #39BB82; shader: flat"
+                position="0 0 -1"
+                visible="false"
+                teleport-target></a-entity>
+      </a-entity>
+   </a-scene>
+  </body>
 </html>
