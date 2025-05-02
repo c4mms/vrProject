@@ -8,11 +8,7 @@
   </head>
   <body>
     <a-scene>
-      <!-- Assets -->
-      <a-assets>
-        <img id="groundTexture" src="https://cdn.pixabay.com/photo/2016/03/23/19/42/marble-1275781_1280.jpg">
-
-      </a-assets>
+    
       <!-- Strong ambient light for overall brightness -->
 <a-entity light="type: ambient; intensity: 1.2; color: #ffffff"></a-entity>
 
@@ -24,7 +20,7 @@
       
       <!-- Ground (teleportable surface) -->
       <a-plane position="0 0 0" rotation="-90 0 0" width="20" height="20"
-               src="#groundTexture" class="teleportable" shadow></a-plane>
+         color="orange" class="teleportable" shadow></a-plane>
 
       <!-- Lights -->
       <a-entity light="type: ambient; intensity: 0.5"></a-entity>
