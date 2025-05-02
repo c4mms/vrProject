@@ -1,44 +1,26 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <title>Teleport Example</title>
-    <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+    <meta charset="utf-8" />
+    <title>Simple Teleport Example</title>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
     <script src="https://cdn.aframe.io/components/teleport-controls/teleport-controls.min.js"></script>
-    <script src="https://cdn.aframe.io/components/hand-controls/hand-controls.min.js"></script>
   </head>
   <body>
     <a-scene>
-      
-      <!-- Lighting -->
-      <a-entity light="type: ambient; intensity: 0.5"></a-entity>
-      <a-entity light="type: directional; intensity: 0.6" position="0 10 5"></a-entity>
+      <!-- Teleportable floor -->
+      <a-plane position="0 0 0" rotation="-90 0 0" width="30" height="30" color="#7BC8A4"
+               class="teleportable" teleport-target></a-plane>
 
-      <!-- Ground (teleportable surface) -->
-      <a-plane class="teleportable"
-               position="0 0 0"
-               rotation="-90 0 0"
-               width="30"
-               height="30"
-               color="#7BC8A4"
-               nav-mesh></a-plane>
-
-      <!-- Camera rig (head + controllers) -->
-      <a-entity id="rig" position="0 1.6 4">
-        <!-- Head (camera) -->
-        <a-entity id="head" camera look-controls></a-entity>
-
-        <!-- Right hand with teleport -->
-        <a-entity laser-controls="hand: right"
-                  teleport-controls="cameraRig: #rig; teleportOrigin: #head; button: trigger"
-                  raycaster="objects: .teleportable"
-                  line="color: #00f; opacity: 0.8">
-        </a-entity>
-
-        <!-- Left hand (just visible) -->
-        <a-entity laser-controls="hand: left"></a-entity>
+      <!-- Camera rig with teleport-controls -->
+      <a-entity id="rig" position="0 1.6 5">
+        <a-camera id="head" wasd-controls-enabled="false"></a-camera>
+        <a-entity teleport-controls="cameraRig: #rig; teleportOrigin: #head; button: trigger"></a-entity>
       </a-entity>
 
+      <!-- Lighting -->
+      <a-entity light="type: ambient; intensity: 0.5"></a-entity>
+      <a-entity light="type: directional; position: 0 10 0; intensity: 0.6"></a-entity>
     </a-scene>
   </body>
 </html>
