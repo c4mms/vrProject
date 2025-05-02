@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Teletrasporto e Rotazione VR con A-Frame</title>
+    <title>Teletrasporto e Rotazione VR con A-Frame (Debug)</title>
     <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
     <script>
         AFRAME.registerComponent('teleport-controls', {
@@ -14,40 +14,46 @@
                     objects: '.teleportable',
                     far: 10,
                     interval: 0,
-                    showLine: true // Mostriamo la linea del laser per ora
+                    showLine: true
                 });
 
                 this.teleportCircle = document.createElement('a-entity');
-                this.teleportCircle.setAttribute('geometry', { primitive: 'circle', radius: 1 });
+                this.teleportCircle.setAttribute('geometry', { primitive: 'circle', radius: 0.5 }); // Raggio ridotto
                 this.teleportCircle.setAttribute('material', { color: 'blue', shader: 'flat', transparent: true, opacity: 0.5 });
                 this.teleportCircle.setAttribute('rotation', '-90 0 0');
                 this.teleportCircle.setAttribute('visible', false);
                 sceneEl.appendChild(this.teleportCircle);
 
+                this.intersectionPoint = null; // Variabile per memorizzare il punto di intersezione
+
                 el.addEventListener('raycaster-intersection', (event) => {
                     if (event.detail.els.length > 0 && event.detail.els[0].classList.contains('teleportable')) {
-                        const intersection = event.detail.intersections[0].point;
+                        this.intersectionPoint = event.detail.intersections[0].point;
                         this.teleportCircle.setAttribute('visible', true);
-                        this.teleportCircle.setAttribute('position', intersection);
+                        this.teleportCircle.setAttribute('position', this.intersectionPoint);
+
+                        // Messaggio di debug (apri la console del browser per vederlo)
+                        console.log('Punto di intersezione:', this.intersectionPoint);
                     } else {
                         this.teleportCircle.setAttribute('visible', false);
+                        this.intersectionPoint = null;
                     }
                 });
 
                 el.addEventListener('raycaster-intersectioncleared', () => {
                     this.teleportCircle.setAttribute('visible', false);
+                    this.intersectionPoint = null;
                 });
 
-                el.addEventListener('triggerdown', () => { // Cambiato a 'triggerdown'
-                    if (this.teleportCircle.getAttribute('visible')) {
-                        const newPosition = this.teleportCircle.getAttribute('position');
+                el.addEventListener('triggerdown', () => {
+                    if (this.teleportCircle.getAttribute('visible') && this.intersectionPoint) {
                         const cameraRig = sceneEl.querySelector('#cameraRig');
                         const headPosition = sceneEl.querySelector('#camera').getAttribute('position');
 
                         cameraRig.setAttribute('position', {
-                            x: newPosition.x - headPosition.x,
+                            x: this.intersectionPoint.x - headPosition.x,
                             y: cameraRig.getAttribute('position').y,
-                            z: newPosition.z - headPosition.z
+                            z: this.intersectionPoint.z - headPosition.z
                         });
                     }
                 });
@@ -57,13 +63,13 @@
         AFRAME.registerComponent('joystick-rotation', {
             init: function () {
                 const el = this.el;
-                const cameraRig = el.parentNode; // Otteniamo il cameraRig
+                const cameraRig = el.parentNode;
 
                 el.addEventListener('axismove', (event) => {
-                    const joystickX = event.detail.axis[2]; // Asse X del joystick destro (potrebbe variare)
+                    const joystickX = event.detail.axis[2];
 
-                    if (Math.abs(joystickX) > 0.1) { // Sensibilità per evitare rotazioni accidentali
-                        cameraRig.object3D.rotation.y -= joystickX * 0.02; // Regola la velocità di rotazione
+                    if (Math.abs(joystickX) > 0.1) {
+                        cameraRig.object3D.rotation.y -= joystickX * 0.02;
                     }
                 });
             }
