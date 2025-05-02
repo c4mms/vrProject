@@ -5,15 +5,17 @@
     <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
     <script>
 AFRAME.registerComponent('teleport-controls', {
+    schema: {},
+
     init: function () {
         const el = this.el;
-        const sceneEl = this.el.sceneEl;
+        const sceneEl = el.sceneEl;
 
         el.setAttribute('laser-controls', { hand: 'right' });
         el.setAttribute('raycaster', {
             objects: '.teleportable',
             far: 10,
-            interval: 0,
+            interval: 0, // forza aggiornamento continuo
             showLine: true
         });
 
@@ -24,33 +26,30 @@ AFRAME.registerComponent('teleport-controls', {
         this.teleportCircle.setAttribute('visible', false);
         sceneEl.appendChild(this.teleportCircle);
 
-        this.intersectionPoint = new THREE.Vector3(); // Usiamo un Vector3 per memorizzare il punto
+        this.intersectionPoint = null;
+    },
 
-        el.addEventListener('raycaster-intersection', (event) => {
-            if (event.detail.els.length > 0 && event.detail.els[0].classList.contains('teleportable')) {
-                this.intersectionPoint.copy(event.detail.intersections[0].point);
-                this.teleportCircle.setAttribute('visible', true);
-                this.teleportCircle.setAttribute('position', this.intersectionPoint);
-            } else {
-                this.teleportCircle.setAttribute('visible', false);
-            }
-        });
+    tick: function () {
+        const raycaster = this.el.components.raycaster;
+        if (!raycaster) return;
 
-        el.addEventListener('raycaster-intersectioncleared', () => {
+        const intersections = raycaster.intersections;
+        if (intersections.length > 0 && intersections[0].object.el.classList.contains('teleportable')) {
+            const point = intersections[0].point;
+            this.intersectionPoint = point;
+            this.teleportCircle.setAttribute('visible', true);
+            this.teleportCircle.setAttribute('position', point);
+        } else {
             this.teleportCircle.setAttribute('visible', false);
-        });
+            this.intersectionPoint = null;
+        }
+    },
 
-        el.tick = function () { // Funzione tick per aggiornare ad ogni frame
-            if (this.el.components.raycaster && this.el.components.raycaster.intersectedEls.length > 0 && this.el.components.raycaster.intersectedEls[0].classList.contains('teleportable')) {
-                const intersection = this.el.components.raycaster.intersections[0].point;
-                this.teleportCircle.setAttribute('position', intersection);
-            }
-        };
-
-        el.addEventListener('triggerdown', () => {
-            if (this.teleportCircle.getAttribute('visible')) {
-                const cameraRig = sceneEl.querySelector('#cameraRig');
-                const headPosition = sceneEl.querySelector('#camera').getAttribute('position');
+    events: {
+        triggerdown: function () {
+            if (this.intersectionPoint) {
+                const cameraRig = this.el.sceneEl.querySelector('#cameraRig');
+                const headPosition = this.el.sceneEl.querySelector('#camera').getAttribute('position');
 
                 cameraRig.setAttribute('position', {
                     x: this.intersectionPoint.x - headPosition.x,
@@ -58,7 +57,7 @@ AFRAME.registerComponent('teleport-controls', {
                     z: this.intersectionPoint.z - headPosition.z
                 });
             }
-        });
+        }
     }
 });
     </script>
