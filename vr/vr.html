@@ -4,65 +4,41 @@
     <title>Showroom</title>
     <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
     <script>
-        AFRAME.registerComponent('teleport-controls', {
-    init: function () {
-        const el = this.el;
-        const sceneEl = this.el.sceneEl;
-        const teleportTarget = sceneEl.querySelector('[teleport-target]'); // Ottieni il reticolo
-
-        el.setAttribute('laser-controls', { hand: 'right' });
-        el.setAttribute('raycaster', {
-            objects: '.teleportable',
-            far: 10,
-            interval: 0,
-            showLine: true
-        });
-
-        this.intersectionPoint = new THREE.Vector3();
-
-        el.addEventListener('raycaster-intersection', (event) => {
-            if (event.detail.els.length > 0 && event.detail.els[0].classList.contains('teleportable')) {
-                this.intersectionPoint.copy(event.detail.intersections[0].point);
-                teleportTarget.setAttribute('visible', true);
-                teleportTarget.setAttribute('position', this.intersectionPoint);
-            } else {
-                teleportTarget.setAttribute('visible', false);
-            }
-        });
-
-        el.addEventListener('raycaster-intersectioncleared', () => {
-            teleportTarget.setAttribute('visible', false);
-        });
-
-        el.addEventListener('triggerdown', () => {
-            if (teleportTarget.getAttribute('visible')) {
-                const cameraRig = sceneEl.querySelector('#rig');
-                const headPosition = sceneEl.querySelector('#head').getAttribute('position');
-                const targetPosition = teleportTarget.getAttribute('position');
-
-                cameraRig.setAttribute('position', {
-                    x: targetPosition.x - headPosition.x,
-                    y: cameraRig.getAttribute('position').y,
-                    z: targetPosition.z - headPosition.z
-                    });
-                    }
-                });
-            }
-        });
-             AFRAME.registerComponent('joystick-rotation', {
+          AFRAME.registerComponent('joystick-rotation', {
             init: function () {
                 const el = this.el;
-                const cameraRig = el.parentNode; // Otteniamo il cameraRig
+                const cameraRig = el.parentNode;
 
                 el.addEventListener('axismove', (event) => {
-                    const joystickX = event.detail.axis[2]; // Asse X del joystick destro (potrebbe variare)
+                    const joystickX = event.detail.axis[2]; // Asse X del joystick destro
 
-                    if (Math.abs(joystickX) > 0.1) { // Sensibilità per evitare rotazioni accidentali
-                        cameraRig.object3D.rotation.y -= joystickX * 0.02; // Regola la velocità di rotazione
+                    if (Math.abs(joystickX) > 0.1) {
+                        cameraRig.object3D.rotation.y -= joystickX * 0.02;
                     }
                 });
             }
-});
+        });
+
+        AFRAME.registerComponent('movement-controls', {
+            init: function () {
+                this.rig = this.el;
+                this.camera = this.rig.querySelector('#head');
+                this.speed = 0.1;
+            },
+
+            tick: function (time, deltaTime) {
+                const leftController = this.rig.querySelector('[laser-controls="hand: left"]');
+                if (leftController && leftController.components && leftController.components['laser-controls'] && leftController.components['laser-controls'].isConnected) {
+                    const joystickY = leftController.components['laser-controls'].axis[3]; // Asse Y del joystick sinistro (avanti/indietro)
+
+                    if (Math.abs(joystickY) > 0.1) {
+                        const direction = new THREE.Vector3(0, 0, joystickY * this.speed);
+                        direction.applyQuaternion(this.camera.object3D.quaternion);
+                        this.rig.object3D.position.add(direction);
+                    }
+                }
+            }
+        });
     </script>
 </head>
 <body>
