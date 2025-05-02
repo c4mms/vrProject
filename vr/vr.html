@@ -1,43 +1,86 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <title>Teleport Demo</title>
-    <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
-    <script src="https://cdn.aframe.io/components/teleport-controls/teleport-controls.min.js"></script>
-  </head>
-  <body>
+<head>
+    <title>Teletrasporto VR con A-Frame</title>
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+    <script>
+        AFRAME.registerComponent('teleport-controls', {
+            init: function () {
+                const el = this.el;
+                const sceneEl = this.el.sceneEl;
+
+                el.setAttribute('laser-controls', { hand: 'right' });
+                el.setAttribute('raycaster', {
+                    objects: '.teleportable',
+                    far: 10,
+                    interval: 0,
+                    showLine: false
+                });
+
+                this.teleportArc = document.createElement('a-entity');
+                this.teleportArc.setAttribute('geometry', {
+                    primitive: 'arc',
+                    radius: 1,
+                    thetaLength: 90,
+                    segments: 32
+                });
+                this.teleportArc.setAttribute('material', { color: 'blue', shader: 'flat' });
+                this.teleportArc.setAttribute('visible', false);
+                sceneEl.appendChild(this.teleportArc);
+
+                this.cursor = document.createElement('a-entity');
+                this.cursor.setAttribute('geometry', { primitive: 'ring', radiusInner: 0.01, radiusOuter: 0.02 });
+                this.cursor.setAttribute('material', { color: 'blue', shader: 'flat' });
+                this.cursor.setAttribute('position', { x: 0, y: 0.01, z: 0 });
+                this.cursor.setAttribute('visible', false);
+                sceneEl.appendChild(this.cursor);
+
+                el.addEventListener('raycaster-intersection', (event) => {
+                    if (event.detail.els.length > 0 && event.detail.els[0].classList.contains('teleportable')) {
+                        const intersection = event.detail.intersections[0].point;
+                        this.teleportArc.setAttribute('visible', true);
+                        this.teleportArc.setAttribute('position', { x: el.object3D.position.x, y: el.object3D.position.y, z: el.object3D.position.z });
+                        this.teleportArc.setAttribute('rotation', { x: -90, y: Math.atan2(intersection.x - el.object3D.position.x, intersection.z - el.object3D.position.z) * 180 / Math.PI, z: 0 });
+                        this.cursor.setAttribute('visible', true);
+                        this.cursor.setAttribute('position', intersection);
+                    } else {
+                        this.teleportArc.setAttribute('visible', false);
+                        this.cursor.setAttribute('visible', false);
+                    }
+                });
+
+                el.addEventListener('raycaster-intersectioncleared', () => {
+                    this.teleportArc.setAttribute('visible', false);
+                    this.cursor.setAttribute('visible', false);
+                });
+
+                el.addEventListener('abuttondown', () => {
+                    if (this.cursor.getAttribute('visible')) {
+                        const newPosition = this.cursor.getAttribute('position');
+                        const cameraRig = sceneEl.querySelector('#cameraRig');
+                        const headPosition = sceneEl.querySelector('#camera').getAttribute('position');
+
+                        cameraRig.setAttribute('position', {
+                            x: newPosition.x - headPosition.x,
+                            y: cameraRig.getAttribute('position').y,
+                            z: newPosition.z - headPosition.z
+                        });
+                    }
+                });
+            }
+        });
+    </script>
+</head>
+<body>
     <a-scene>
-    
-      <!-- Strong ambient light for overall brightness -->
-<a-entity light="type: ambient; intensity: 1.2; color: #ffffff"></a-entity>
+        <a-entity id="cameraRig">
+            <a-entity id="camera" camera position="0 1.6 0" look-controls></a-entity>
+            <a-entity id="rightHand" teleport-controls></a-entity>
+            <a-entity id="leftHand" laser-controls="hand: left" raycaster="objects: .teleportable; far: 10; showLine: true"></a-entity>
+        </a-entity>
 
-<!-- Directional light simulating sunlight -->
-<a-entity light="type: directional; intensity: 1.0; color: #ffffff"
-          position="0 10 5"
-          rotation="-45 0 0"
-          castShadow="true"></a-entity>
-      
-      <a-plane position="0 0 0" rotation="-90 0 0" width="20" height="20"
-         color="orange" nav-mesh shadow></a-plane>
-
-      <!-- Lights -->
-      <a-entity light="type: ambient; intensity: 0.5"></a-entity>
-      <a-entity light="type: directional; intensity: 0.6" position="1 3 2"></a-entity>
-
-      <!-- Camera Rig -->
-     <a-entity id="rig" position="0 0 10">
-  <!-- Head (Camera) -->
-  <a-entity id="head" camera position="0 1.6 0" look-controls></a-entity>
-
-  <!-- Right controller for teleport -->
-  <a-entity 
-    teleport-controls="cameraRig: #rig; teleportOrigin: #head; button: trigger"
-    oculus-touch-controls="hand: right"
-    line="color: blue; opacity: 0.8">
-  </a-entity>
-</a-entity>
-
+        <a-plane class="teleportable" position="0 0 -4" rotation="-90 0 0" width="10" height="10" color="#7BC8A4"></a-plane>
+        <a-sky color="#ECECEC"></a-sky>
     </a-scene>
-  </body>
+</body>
 </html>
