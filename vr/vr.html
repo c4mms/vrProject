@@ -20,16 +20,18 @@
       <a-entity light="type: directional; intensity: 0.5" position="1 3 2"></a-entity>
 
       <!-- Ground (teleportable and static) -->
-      <a-plane position="0 0 0" rotation="-90 0 0" width="500" height="500" color="#7BC8A4"
-         class="teleportable" nav-mesh static-body></a-plane>
+      <a-plane position="0 0 0" rotation="-90 0 0" width="500" height="500"
+         color="#7BC8A4"
+         class="teleportable"
+         static-body
+         nav-mesh></a-plane> 
      
       <!-- 3D model -->
       <a-entity gltf-model="#showroom-model" position="0 0 0" scale="0.8 0.8 0.8" dynamic-body></a-entity>
 
       <!-- Camera rig with teleportation controls -->
-      <a-entity id="rig" position="0 20 40" 
-         teleport-controls="cameraRig: #rig; teleportOrigin: #head; button: trigger">
-  
+      <a-entity id="rig" position="0 20 40">
+        
       <!-- Camera (user's head) -->
       <a-entity id="head" camera position="0 1.6 0" look-controls></a-entity>
       
@@ -37,8 +39,17 @@
       <a-entity laser-controls="hand: left" raycaster="objects: .teleportable"></a-entity>
       
       <!-- Right Controller (with teleport arc and cursor for feedback) -->
-      <a-entity laser-controls="hand: right" raycaster="objects: .teleportable"
-            line="color: #00f; opacity: 0.5"></a-entity>
+      <a-entity laser-controls="hand: right"
+          raycaster="objects: .teleportable"
+          line="color: #00f; opacity: 0.8"
+          teleport-controls="cameraRig: #rig; teleportOrigin: #head; button: trigger">
+          
+      <!-- Reticle visivo per la destinazione del teletrasporto -->
+      <a-entity geometry="primitive: ring; radiusInner: 0.2; radiusOuter: 0.25"
+                material="color: #39BB82; shader: flat"
+                position="0 0 -1"
+                visible="false"
+                teleport-target></a-entity>
       </a-entity>
    </a-scene>
   </body>
