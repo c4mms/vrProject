@@ -19,27 +19,43 @@
       }
     });
 
-    AFRAME.registerComponent('joystick-movement', { //right hand
-      tick: function () {
-        const rig = document.querySelector('#rig');
-        const head = document.querySelector('#head');
-        const controller = document.querySelector('#rightHand');
-        const gamepad = controller.components['tracked-controls']?.controller;
+    AFRAME.registerComponent('joystick-movement', { // right hand
+  tick: function () {
+    const rig = document.querySelector('#rig');
+    const head = document.querySelector('#head');
+    const controller = document.querySelector('#rightHand');
+    
+    if (!controller || !controller.components['tracked-controls']) return;
+    
+    const gamepad = controller.components['tracked-controls'].controller;
+    if (gamepad && gamepad.axes.length >= 4) {
+      const y = gamepad.axes[3]; // Avanti/indietro
+      const x = gamepad.axes[2]; // Destra/sinistra
 
-        if (gamepad && gamepad.axes.length >= 4) {
-          const y = gamepad.axes[3]; // Avanti/indietro
-          if (Math.abs(y) > 0.1) {
-            const dir = new THREE.Vector3(0, 0, -y * 0.1);
-            dir.applyQuaternion(head.object3D.quaternion);
-            rig.object3D.position.add(dir);
-          }
-        }
+      // Combine both axes into a single direction vector
+      if (Math.abs(x) > 0.1 || Math.abs(y) > 0.1) {
+        const dir = new THREE.Vector3(x * 0.1, 0, -y * 0.1);
+        dir.applyQuaternion(head.object3D.quaternion);
+        rig.object3D.position.add(dir);
       }
+    }
+  }
+});
+
+    document.querySelector('a-scene').addEventListener('loaded', () => {
+      console.log('Scene fully loaded');
     });
   </script>
 </head>
 <body>
   <a-scene vr-mode-ui="enabled: true">
+
+    <!-- Loading Screen -->
+    <a-entity loading-screen="enabled: true">
+      <a-ring position="0 0 -5" radius-inner="0.1" radius-outer="0.2" color="yellow" animation="property: rotation; to: 0 360 0; dur: 2000; loop: true"></a-ring>
+      <a-text value="Loading..." align="center" position="0 1 -5" color="white" width="6"></a-text>
+    </a-entity>
+      
     <a-assets timeout="20000">
       <a-asset-item id="showroom-model" src="https://showroomcd.s3.amazonaws.com/showroom.glb"></a-asset-item>
     </a-assets>
