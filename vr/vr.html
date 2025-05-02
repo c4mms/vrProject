@@ -44,10 +44,24 @@
                     x: targetPosition.x - headPosition.x,
                     y: cameraRig.getAttribute('position').y,
                     z: targetPosition.z - headPosition.z
+                    });
+                    }
                 });
             }
         });
-    }
+             AFRAME.registerComponent('joystick-rotation', {
+            init: function () {
+                const el = this.el;
+                const cameraRig = el.parentNode; // Otteniamo il cameraRig
+
+                el.addEventListener('axismove', (event) => {
+                    const joystickX = event.detail.axis[2]; // Asse X del joystick destro (potrebbe variare)
+
+                    if (Math.abs(joystickX) > 0.1) { // Sensibilità per evitare rotazioni accidentali
+                        cameraRig.object3D.rotation.y -= joystickX * 0.02; // Regola la velocità di rotazione
+                    }
+                });
+            }
 });
     </script>
 </head>
