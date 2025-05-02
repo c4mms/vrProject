@@ -42,9 +42,14 @@
   }
 });
 
-    document.querySelector('a-scene').addEventListener('loaded', () => {
-      console.log('Scene fully loaded');
-    });
+  window.addEventListener('load', () => {
+    const scene = document.querySelector('a-scene');
+    if (scene) {
+      scene.addEventListener('loaded', () => {
+        console.log('Scene fully loaded');
+      });
+    }
+  });
   </script>
 </head>
 <body>
