@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Showroom VR - Movimento con joystick</title>
+  <title>Showroom</title>
   <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+  <script src="https://cdn.aframe.io/components/hand-controls/hand-controls.min.js"></script>
+  <script src="https://unpkg.com/aframe-physics-system/dist/aframe-physics-system.js"></script>
   <script>
-    AFRAME.registerComponent('joystick-rotation', {
+    AFRAME.registerComponent('joystick-rotation', { //left hand
       init: function () {
         const rig = document.querySelector('#rig');
 
@@ -17,11 +19,11 @@
       }
     });
 
-    AFRAME.registerComponent('joystick-movement', {
+    AFRAME.registerComponent('joystick-movement', { //right hand
       tick: function () {
         const rig = document.querySelector('#rig');
         const head = document.querySelector('#head');
-        const controller = document.querySelector('#leftHand');
+        const controller = document.querySelector('#rightHand');
         const gamepad = controller.components['tracked-controls']?.controller;
 
         if (gamepad && gamepad.axes.length >= 4) {
@@ -37,35 +39,38 @@
   </script>
 </head>
 <body>
-  <a-scene vr-mode-ui="enabled: true">
+  <a-scene vr-mode-ui="enabled: true" physics="debug: true">
     <a-assets timeout="20000">
       <a-asset-item id="showroom-model" src="https://showroomcd.s3.amazonaws.com/showroom.glb"></a-asset-item>
     </a-assets>
 
-    <!-- Luci -->
+    <!-- Lighting  -->
     <a-entity light="type: ambient; intensity: 0.7"></a-entity>
     <a-entity light="type: directional; intensity: 0.5" position="1 3 2"></a-entity>
 
-    <!-- Piano di camminamento -->
-    <a-plane rotation="-90 0 0" width="500" height="500" color="#7BC8A4"
-             class="teleportable" static-body></a-plane>
+    <!-- Ground (teleportable and static) -->
+     <a-plane rotation="-90 0 0" width="500" height="500" color="#7BC8A4"
+                 class="teleportable" static-body nav-mesh></a-plane>
 
-    <!-- Modello -->
-    <a-entity gltf-model="#showroom-model" position="0 0 0" scale="0.8 0.8 0.8"></a-entity>
+    <!-- 3D model -->
+    <a-entity gltf-model="#showroom-model" position="0 0 0" scale="0.5 0.5 0.5"></a-entity>
 
-    <!-- Rig con camera e controller -->
+    <!-- Camera rig -->
     <a-entity id="rig" position="0 22 45" joystick-movement>
+       <!-- Camera (user's head) -->
       <a-entity id="head" camera look-controls position="0 0 0"></a-entity>
 
-      <!-- Controller sinistro per camminare -->
-      <a-entity id="leftHand"
-                laser-controls="hand: left"
-                tracked-controls="hand: left"></a-entity>
-
-      <!-- Controller destro per ruotare -->
+      <!-- Right Controller -->
       <a-entity id="rightHand"
+                hand-controls="hand: right"
                 laser-controls="hand: right"
-                tracked-controls="hand: right"
+                tracked-controls="hand: right"></a-entity>
+
+      !-- Left Controller -->
+      <a-entity id="leftHand"
+                hand-controls="hand: left"
+                laser-controls="hand: left"
+                tracked-controls="hand: left"
                 joystick-rotation></a-entity>
     </a-entity>
   </a-scene>
