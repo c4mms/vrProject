@@ -26,13 +26,19 @@
       <a-entity gltf-model="#showroom-model" position="0 0 0" scale="0.8 0.8 0.8" dynamic-body></a-entity>
 
       <!-- Camera rig with teleportation controls -->
-      <a-entity id="rig" position="0 22 60" teleport-controls="button: trigger" rotation="0 0 0">
-        <a-camera position="0 1.6 0" look-controls="pointerLockEnabled: false"></a-camera>
-      </a-entity>
-
-      <!-- VR Controller and Laser -->
+      <a-entity id="rig" position="0 0 0" movement-controls teleport-controls="cameraRig: #rig; teleportOrigin: #head; button: trigger">
+  
+      <!-- Camera (user's head) -->
+      <a-entity id="head" camera position="0 1.6 0" look-controls></a-entity>
+      
+      <!-- Left Controller -->
       <a-entity laser-controls="hand: left" raycaster="objects: .interactable"></a-entity>
-      <a-entity laser-controls="hand: right" raycaster="objects: .interactable"></a-entity>
-    </a-scene>
+      
+      <!-- Right Controller (with teleport arc and cursor for feedback) -->
+      <a-entity laser-controls="hand: right" raycaster="objects: .interactable" 
+                line="color: #00f; opacity: 0.5"></a-entity>
+
+      </a-entity>
+   </a-scene>
   </body>
 </html>
