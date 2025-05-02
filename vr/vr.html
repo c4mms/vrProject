@@ -26,12 +26,16 @@
       <a-entity gltf-model="#showroom-model" position="0 0 0" scale="0.8 0.8 0.8" dynamic-body></a-entity>
 
       <!-- Camera rig with teleportation controls -->
-      <a-entity id="rig" teleport-controls position="0 1.6 10" rotation="0 0 0">
+      <a-entity id="rig" position="0 2 10" teleport-controls="button: trigger" rotation="0 0 0">
+        <a-camera position="0 1.6 0" look-controls="pointerLockEnabled: false"></a-camera>
       </a-entity>
 
       <!-- Hand controllers for VR interaction -->
       <a-entity hand-controls="left"></a-entity>
       <a-entity hand-controls="right"></a-entity>
+
+      <!-- Placeholder box for visual reference of camera position -->
+      <a-box position="0 1.6 10" color="red"></a-box>
     </a-scene>
   </body>
 </html>
