@@ -76,10 +76,21 @@
     <a-entity gltf-model="#showroom-model" position="0 0 0" scale="0.5 0.5 0.5"></a-entity>
 
     <!-- Camera rig -->
-    <a-entity id="rig" position="0 22 45" joystick-movement>
+    <a-entity id="rig" position="0 15 40" joystick-movement>
        <!-- Camera (user's head) -->
       <a-entity id="head" camera look-controls position="0 0 0"></a-entity>
+    <!-- Right Controller -->
+      <a-entity id="rightHand"
+                hand-controls="hand: right"
+                laser-controls="hand: right"
+                tracked-controls="hand: right"></a-entity>
 
+      <!-- Left Controller -->
+      <a-entity id="leftHand"
+                hand-controls="hand: left"
+                laser-controls="hand: left"
+                tracked-controls="hand: left"
+                joystick-rotation></a-entity>
     </a-entity>
   </a-scene>
 </body>
