@@ -4,7 +4,7 @@
   <title>Showroom</title>
   <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
   <script src="https://cdn.aframe.io/components/hand-controls/hand-controls.min.js"></script>
-  <script src="https://unpkg.com/aframe-physics-system/dist/aframe-physics-system.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aframe-physics-system@4.0.1/dist/aframe-physics-system.min.js"></script>
   <script>
     AFRAME.registerComponent('joystick-rotation', { //left hand
       init: function () {
@@ -66,7 +66,7 @@
                 laser-controls="hand: right"
                 tracked-controls="hand: right"></a-entity>
 
-      !-- Left Controller -->
+      <!-- Left Controller -->
       <a-entity id="leftHand"
                 hand-controls="hand: left"
                 laser-controls="hand: left"
