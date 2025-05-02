@@ -4,7 +4,7 @@
   <title>Showroom</title>
   <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
   <script src="https://cdn.aframe.io/components/hand-controls/hand-controls.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/aframe-physics-system@4.0.1/dist/aframe-physics-system.min.js"></script>
+  //<script src="https://cdn.jsdelivr.net/npm/aframe-physics-system@4.0.1/dist/aframe-physics-system.min.js"></script>
   <script>
     AFRAME.registerComponent('joystick-rotation', { //left hand
       init: function () {
@@ -39,7 +39,7 @@
   </script>
 </head>
 <body>
-  <a-scene vr-mode-ui="enabled: true" physics="debug: true">
+  <a-scene vr-mode-ui="enabled: true">
     <a-assets timeout="20000">
       <a-asset-item id="showroom-model" src="https://showroomcd.s3.amazonaws.com/showroom.glb"></a-asset-item>
     </a-assets>
