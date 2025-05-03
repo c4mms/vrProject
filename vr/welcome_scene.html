@@ -4,6 +4,23 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Enter VR Experience</title>
+    <script>
+      function startVR() {
+        const params = new URLSearchParams(window.location.search);
+        const model = params.get('model');
+        const mode = params.get('mode');
+    
+        if (mode === "showroom") {
+          // Go to showroom mode
+          window.location.href = "vr.html";
+        } else if (model) {
+          // Go to single model viewer
+          window.location.href = `vr-viewer.html?model=${encodeURIComponent(model)}`;
+        } else {
+          alert("No VR experience specified.");
+        }
+      }
+    </script>
     <style>
       body {
         margin: 0;
@@ -79,7 +96,7 @@
     <div class="overlay">
       <h1>Enter VR Experience</h1>
       <p>Make sure your VR headset is on and connected for a better experience!</p>
-      <button class="vr-button" onclick="window.location.href='vr.html'">
+      <button class="vr-button" onclick="startVR()">
         Start VR
       </button>
     </div>
