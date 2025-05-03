@@ -329,6 +329,27 @@ function renderProductDetail() {
       sameCollectionContainer.appendChild(card);
     });
   }
+  // Handle VR button
+const vrButton = document.querySelector('.vr-button');
+
+if (vrButton) {
+  if (product.vr && product.glbPath) {
+    // Product supports VR
+    vrButton.disabled = false;
+    vrButton.onclick = () => {
+      window.open(`vr-intro.html?model=${encodeURIComponent(product.glbPath)}`, '_blank');
+    };
+    vrButton.classList.remove("disabled");
+    vrButton.style.display = "inline-block"; // Ensure it's shown
+  } else {
+    // No VR support 
+    vrButton.disabled = false; // keep it clickable
+    vrButton.classList.add("disabled");
+    vrButton.onclick = () => {
+    alert("Sorry, we don’t have a 3D model for this product yet.");
+      };
+  }
+}
 }
 
 // Show popup
