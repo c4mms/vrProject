@@ -337,18 +337,13 @@ function renderProductDetail() {
     });
   }
   // Handle VR button
-const vrButton = document.querySelector('.vr-button');
-
-if (vrButton) {
-  if (product.vr && product.glbPath) {
-    // Product supports VR
-    vrButton.disabled = false;
-    vrButton.onclick = () => {
-      window.open(`vr-intro.html?model=${encodeURIComponent(product.glbPath)}`, '_blank');
-    };
-    vrButton.classList.remove("disabled");
-    vrButton.style.display = "inline-block"; // Ensure it's shown
-  } else {
+const vrButton = document.getElementById("vr-button");
+if (vrButton && product.glbPath) {
+  vrButton.onclick = () => {
+    window.open(`vr-intro.html?model=${encodeURIComponent(product.glbPath)}`, '_blank');
+  };
+}
+else {
     // No VR support 
     vrButton.disabled = false; // keep it clickable
     vrButton.classList.add("disabled");
@@ -357,7 +352,7 @@ if (vrButton) {
       };
   }
 }
-}
+
 
 // Show popup
 function showPopup(message) {
