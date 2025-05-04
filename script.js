@@ -8,7 +8,8 @@ let products = {
     "category": "man",
     "allSizes": ["42", "44", "46", "48", "50", "52", "54"],
     "availableSizes": ["42", "44", "46", "48", "50"],
-    "vr": true
+    "vr": true,
+    "glbPath": "https://showroomcd.s3.amazonaws.com/vestitiglb/pufferjacket.glb"
   },
   "2":{
     "id": 2,
@@ -19,7 +20,8 @@ let products = {
     "category": "man",
     "allSizes": ["42", "44", "46", "48", "50", "52", "54", "56", "58", "60"],
     "availableSizes": ["42", "44", "46", "52"],
-    "vr": true
+    "vr": true,
+    "glbPath": "https://showroomcd.s3.amazonaws.com/vestitiglb/suit2.glb"
   },
   "3":{
     "id": 3,
@@ -30,7 +32,8 @@ let products = {
     "category": "man",
     "allSizes": ["44", "46", "48", "50", "52", "54", "56"],
     "availableSizes": ["46", "48", "50", "52"],
-    "vr": true
+    "vr": true,
+    "glbPath": "https://showroomcd.s3.amazonaws.com/vestitiglb/tshirt.glb"
   },
   "4":{
     "id": 4,
@@ -41,7 +44,8 @@ let products = {
     "category": "woman",
     "allSizes": ["38", "40", "42", "44", "46", "48", "50"],
     "availableSizes": ["40", "42", "46", "48"],
-    "vr": true
+    "vr": true,
+    "glbPath": "https://showroomcd.s3.amazonaws.com/vestitiglb/dior.glb"
   },
   "5":{
     "id": 5,
@@ -52,7 +56,8 @@ let products = {
     "category": "woman",
     "allSizes": ["38", "40", "42", "44", "46"],
     "availableSizes": ["40", "42", "44", "46"],
-    "vr": true
+    "vr": true,
+    "glbPath": "https://showroomcd.s3.amazonaws.com/vestitiglb/canottiera.glb"
   },
   "6":{
     "id": 6,
@@ -63,7 +68,8 @@ let products = {
     "category": "woman",
     "allSizes": ["38", "40", "42", "44", "46", "48"],
     "availableSizes": ["38", "40", "44"],
-    "vr": true
+    "vr": true,
+    "glbPath": "https://showroomcd.s3.amazonaws.com/vestitiglb/minidress.glb"
   },
   "7":{
     "id": 7,
@@ -74,29 +80,30 @@ let products = {
     "category": "woman",
     "allSizes": ["36", "38", "40", "42", "44", "46"],
     "availableSizes": ["36", "38", "40", "42", "44", "46"],
-    "vr": true
+    "vr": true,
+    "glbPath": "https://showroomcd.s3.amazonaws.com/vestitiglb/dress.glb"
   },
   "8":{
     "id": 8,
     "name": "Elegant Dress",
     "price": "$350",
     "description": "Refined silhouette with modern elegance for 2025.",
-    "image": "img/w2.jpg",
+    "image": "img/w4.jpg",
     "category": "woman",
     "allSizes": ["XS", "S", "M", "L", "XL"],
     "availableSizes": ["S", "M", "L"],
-    "vr": true
+    "vr": false
   },
   "9":{
     "id": 9,
     "name": "Elegant Dress",
     "price": "$350",
     "description": "Refined silhouette with modern elegance for 2025.",
-    "image": "img/w3.jpg",
+    "image": "img/w5.jpg",
     "category": "woman",
     "allSizes": ["XS", "S", "M", "L", "XL"],
     "availableSizes": ["S", "M", "L"],
-    "vr": true
+    "vr": false
   },
   "10": {
     "id": 10,
@@ -113,7 +120,7 @@ let products = {
     "name": "Sunrise Midi Dress",
     "price": "$420",
     "description": "Elegant midi dress with flowing lines and soft colors.",
-    "image": "img/sp1.jpg",
+    "image": "img/sp2.jpg",
     "category": "springCollection25",
     "allSizes": ["XS", "S", "M", "L", "XL"],
     "availableSizes": ["M", "L"]
@@ -123,7 +130,7 @@ let products = {
     "name": "Rose Petal Slip",
     "price": "$370",
     "description": "A soft slip dress with rose petal detailing, ideal for garden parties.",
-    "image": "img/sp1.jpg",
+    "image": "img/sp3.jpg",
     "category": "springCollection25",
     "allSizes": ["XS", "S", "M", "L"],
     "availableSizes": ["XS", "S", "M"]
@@ -133,7 +140,7 @@ let products = {
     "name": "Golden Hour Dress",
     "price": "$360",
     "description": "Flowy evening dress capturing the magic of golden hour.",
-    "image": "img/sp1.jpg",
+    "image": "img/sp4.jpg",
     "category": "springCollection25",
     "allSizes": ["S", "M", "L", "XL"],
     "availableSizes": ["S", "M"]
@@ -143,7 +150,7 @@ let products = {
     "name": "Pastel Dream Dress",
     "price": "$340",
     "description": "Light pastel dress, perfect for sunny spring days.",
-    "image": "img/sp1.jpg",
+    "image": "img/sp5.jpg",
     "category": "springCollection25",
     "allSizes": ["XS", "S", "M", "L", "XL"],
     "availableSizes": ["S", "L"]
@@ -153,7 +160,7 @@ let products = {
     "name": "Velvet Garden Dress",
     "price": "$660",
     "description": "Luxurious velvet dress adorned with floral embroidery.",
-    "image": "img/sp1.jpg",
+    "image": "img/sp6.jpg",
     "category": "springCollection25",
     "allSizes": ["XS", "S", "M"],
     "availableSizes": ["S", "M"]
