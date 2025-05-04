@@ -340,7 +340,7 @@ function renderProductDetail() {
 const vrButton = document.getElementById("vr-button");
 if (vrButton && product.glbPath) {
   vrButton.onclick = () => {
-    window.open(`vr-intro.html?model=${encodeURIComponent(product.glbPath)}`, '_blank');
+    window.open(`welcome_scene.html?model=${encodeURIComponent(product.glbPath)}`, '_blank');
   };
 }
 else {
