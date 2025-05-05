@@ -110,9 +110,7 @@
         
   </style> 
   </head> 
-  <body>
-      <a-scene vr-mode-ui="enabled: true">
-          
+  <body>          
        <!-- Loading Overlay UI-->
           <div id="loadingOverlay" style="
           position: fixed; top: 0; left: 0; width: 100%; height: 100%;
@@ -139,8 +137,9 @@
               <li><strong>On desktop:</strong> Use <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> keys to walk, and your mouse to look around</li>
             </ul>
           </div>
-        </div>
-       
+          </div>
+
+    <a-scene vr-mode-ui="enabled: true">
      <!-- Camera rig -->
       <a-entity id="cameraRig" movement-controls position="0 1.6 5">
         
