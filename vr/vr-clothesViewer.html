@@ -5,41 +5,147 @@
   <title>VR Clothes Viewer</title>
   <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/aframe-extras@6.1.1/dist/aframe-extras.controls.min.js"></script>
+ 
+  <script>
+    // Get the model URL from the query parameter
+    const urlParams = new URLSearchParams(window.location.search);
+    const modelUrl = urlParams.get('model');
+  
+    if (modelUrl) {
+      const modelEntity = document.getElementById('model');
+      const decodedUrl = decodeURIComponent(modelUrl);
+  
+      console.log("Trying to load model:", decodedUrl);
+      modelEntity.setAttribute('gltf-model', decodedUrl);
+  
+      modelEntity.addEventListener('model-error', (e) => {
+        console.error("Model failed to load:", e.detail.src);
+        alert("Failed to load the model. Check if the .glb URL is correct and CORS is enabled.");
+      });
+  
+      modelEntity.addEventListener('model-loaded', () => {
+        console.log("Model loaded successfully.");
+        document.getElementById('loadingOverlay').style.display = 'none';
+      });
+    } else {
+      alert("No model specified in the URL.");
+    }
+  
+    // Register thumbstick-move component
+    AFRAME.registerComponent('thumbstick-move', {
+      init: function () {
+        this.el.addEventListener('thumbstickmoved', (evt) => {
+          const rig = document.querySelector('#cameraRig');
+          if (!rig) return;
+
+          const direction = evt.detail;
+          const delta = 0.1;
+
+          if (Math.abs(direction.y) > 0.95) {
+            const dirZ = direction.y < 0 ? -delta : delta;
+            rig.object3D.translateZ(dirZ);
+          }
+        });
+      }
+    });
+
+      // Register thumbstick-rotate component
+      AFRAME.registerComponent('thumbstick-rotate', {
+        init: function () {
+          this.el.addEventListener('thumbstickmoved', (evt) => {
+            const rig = document.querySelector('#cameraRig');
+            if (!rig) return;
+
+            const direction = evt.detail;
+            const deltaAngle = 2;
+
+            if (Math.abs(direction.x) > 0.95) {
+              const angle = direction.x > 0 ? -deltaAngle : deltaAngle;
+              rig.object3D.rotation.y += THREE.Math.degToRad(angle);
+            }
+          });
+        }
+      });
+    
+    // Fade out the loading screen after the scene is fully loaded
+    window.addEventListener('load', () => {
+      const scene = document.querySelector('a-scene');
+      if (scene) {
+        scene.addEventListener('loaded', () => {
+          const overlay = document.getElementById('loadingOverlay');
+          overlay.style.opacity = '0'; // fade out
+          setTimeout(() => {
+            overlay.style.display = 'none';  // hide after fade
+          }, 1000);
+        });
+      }
+    });
+  </script>
+  <style>
+    
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+    
+      /* kbd styling for keyboard keys */
+      kbd {
+        background: #eee;
+        border-radius: 4px;
+        padding: 2px 6px;
+        font-size: 0.9em;
+        font-family: monospace;
+      }
+        
+        .loader {
+      border: 6px solid #f3f3f3;
+      border-top: 6px solid #555;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+      margin: 0 auto;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.15);
+    }
+        
+  </style> 
   </head> 
   <body>
-    
-    <!-- Loading Overlay -->
-      <div id="loadingOverlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-        background: linear-gradient(#ffffff, #dddddd); color: #333; display: flex;
-        flex-direction: column; align-items: center; justify-content: center; z-index: 9999;
-        font-family: sans-serif; text-align: center; padding: 2rem;">
-        <h1 style="margin-bottom: 1rem;">VR Clothes Viewer</h1>
-        <p style="max-width: 500px; font-size: 1.2rem;">
-          Please wait while we load your model...
-        </p>
-        <div style="margin-top: 2rem;">
-          <h3>How to use:</h3>
-          <ul style="list-style: none; padding: 0; font-size: 1rem;">
-            <li>Click the <strong>VR button</strong> (bottom right)</li>
-            <li>Use <strong>controllers</strong> to move (right) and rotate (left)</li>
-            <li>On desktop: move with <strong>WASD</strong> + mouse</li>
-          </ul>
+      <a-scene vr-mode-ui="enabled: true">
+          
+       <!-- Loading Overlay UI-->
+          <div id="loadingOverlay" style="
+          position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+          background: linear-gradient(to bottom, #f7f7f7, #e2e2e2); color: #333;
+          display: flex; flex-direction: column; align-items: center; justify-content: center;
+          z-index: 9999; font-family: 'Segoe UI', sans-serif; text-align: center; padding: 2rem;
+          opacity: 1; transition: opacity 1s ease;
+        ">
+          <div style="margin-bottom: 1.5rem;">
+            <h1 style="margin: 0; font-size: 2.2rem;">VR Showroom Viewer</h1>
+            <p style="margin-top: 0.5rem; font-size: 1.2rem;">Loading your immersive experience...</p>
+            <div class="loader" style="margin-top: 1.5rem;"></div>
+          </div>
+        
+          <div style="max-width: 500px; background: #fff; padding: 1.5rem 2rem; border-radius: 12px;
+                      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); text-align: left;">
+            <h3 style="margin-top: 0; font-size: 1.2rem;">How to explore:</h3>
+            <ul style="list-style: none; padding-left: 0; line-height: 1.6; font-size: 1rem;">
+              <li>Click the <strong>“Enter VR”</strong> button (bottom right corner)</li>
+              <li><strong>Right controller:</strong> Move forward, backward, left, and right</li>
+              <li><strong>Left controller:</strong> Rotate your view</li>
+              <li style="margin-bottom: 2em;"></li> <!-- blank space -->
+              <li style="margin-bottom: 2em;"></li> <!-- blank space -->
+              <li><strong>On desktop:</strong> Use <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> keys to walk, and your mouse to look around</li>
+            </ul>
+          </div>
         </div>
-      </div>
-
-    <a-scene vr-mode-ui="enabled: true">
-   
-      <!-- CAMERA RIG: Moves with controllers in VR and also allows WASD on desktop -->
+       
+     <!-- Camera rig -->
       <a-entity id="cameraRig" movement-controls position="0 1.6 5">
         
-        <!-- Main camera -->
-        <a-entity 
-          id="camera" 
-          camera 
-          wasd-controls 
-          look-controls="pointerLockEnabled: true"
-          position="0 0 0">
-        </a-entity>
+        <!-- Camera (user's head) -->
+        <a-entity id="camera" camera wasd-controlsposition="0 0 0"></a-entity>
         
         <!-- Left hand (used for rotation) -->
         <a-entity 
@@ -64,75 +170,8 @@
     <a-entity light="type: ambient; intensity: 0.5"></a-entity>
      <a-entity light="type: directional; intensity: 0.8" position="0 10 5"></a-entity>
 
-    <!-- Model placeholder -->
+    <!-- 3D model -->
     <a-entity id="model" position="0 0 0" scale="0.1 0.1 0.1"></a-entity>
-  </a-scene>
-    
-<script>
-  // Get the model URL from the query parameter
-  const urlParams = new URLSearchParams(window.location.search);
-  const modelUrl = urlParams.get('model');
-
-  if (modelUrl) {
-    const modelEntity = document.getElementById('model');
-    const decodedUrl = decodeURIComponent(modelUrl);
-
-    console.log("Trying to load model:", decodedUrl);
-    modelEntity.setAttribute('gltf-model', decodedUrl);
-
-    modelEntity.addEventListener('model-error', (e) => {
-      console.error("Model failed to load:", e.detail.src);
-      alert("⚠️ Failed to load the model. Check if the .glb URL is correct and CORS is enabled.");
-    });
-
-    modelEntity.addEventListener('model-loaded', () => {
-      console.log("✅ Model loaded successfully.");
-      document.getElementById('loadingOverlay').style.display = 'none';
-    });
-  } else {
-    alert("No model specified in the URL.");
-  }
-</script>
-
-
-    <!-- Controller logic -->
-    <script>
-      // Register thumbstick-move component
-      AFRAME.registerComponent('thumbstick-move', {
-        init: function () {
-          this.el.addEventListener('thumbstickmoved', (evt) => {
-            const rig = document.querySelector('#cameraRig');
-            if (!rig) return;
-
-            const direction = evt.detail;
-            const delta = 0.1;
-
-            if (Math.abs(direction.y) > 0.95) {
-              const dirZ = direction.y < 0 ? -delta : delta;
-              rig.object3D.translateZ(dirZ);
-            }
-          });
-        }
-      });
-
-      // Register thumbstick-rotate component
-      AFRAME.registerComponent('thumbstick-rotate', {
-        init: function () {
-          this.el.addEventListener('thumbstickmoved', (evt) => {
-            const rig = document.querySelector('#cameraRig');
-            if (!rig) return;
-
-            const direction = evt.detail;
-            const deltaAngle = 2;
-
-            if (Math.abs(direction.x) > 0.95) {
-              const angle = direction.x > 0 ? -deltaAngle : deltaAngle;
-              rig.object3D.rotation.y += THREE.Math.degToRad(angle);
-            }
-          });
-        }
-      });
-    </script>
- 
+  </a-scene> 
 </body> 
 </html>
