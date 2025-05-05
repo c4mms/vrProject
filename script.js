@@ -217,8 +217,8 @@ function renderCategoryProducts(category, containerId, showAll = false) {
       const card = document.createElement("div");
       card.className = "product-card";
 
-       const vrButton = product.vr ? `<button class="vr-button" onclick="startVR('${product.glbPath}')">Try in VR</button>` : "";
 
+      // HTML for the card 
       card.innerHTML = `
         <a href="product.html?id=${id}" class="product-link">
           <div class="product-image" style="background-image: url('${product.image}')"></div>
@@ -227,9 +227,17 @@ function renderCategoryProducts(category, containerId, showAll = false) {
         </a>
         <div class="product-buttons">
           <button class="heart-button" onclick="toggleHeart(this)">♡</button>
-          ${vrButton}
         </div>
       `;
+      
+      // Add VR button only if applicable
+      if (product.vr && product.glbPath) {
+        const vrBtn = document.createElement("button");
+        vrBtn.className = "vr-button";
+        vrBtn.textContent = "Try in VR";
+        vrBtn.addEventListener("click", () => startVR(product.glbPath));
+        card.querySelector(".product-buttons").appendChild(vrBtn);
+      }
 
         container.appendChild(card);
     }
