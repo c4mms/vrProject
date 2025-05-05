@@ -1,65 +1,24 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <title>VR Clothes Viewer</title>
-  <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
-  <style>
-    body {
-      margin: 0;
-    }
-  </style>
-</head>
-<body>
-  <a-scene vr-mode-ui="enabled: true" embedded>
-    
-    <!-- Loading Screen -->
-    <a-entity loading-screen="enabled: true">
-      <a-ring position="0 0 -5" radius-inner="0.1" radius-outer="0.2" color="yellow" animation="property: rotation; to: 0 360 0; dur: 2000; loop: true"></a-ring>
-      <a-text value="Loading..." align="center" position="0 1 -5" color="white" width="6"></a-text>
-    </a-entity>
+  <head>
+    <meta charset="utf-8">
+    <title>Test A-Frame</title>
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+  </head>
+  <body>
+    <a-scene embedded>
+      <!-- Camera -->
+      <a-entity camera look-controls wasd-controls position="0 1.6 5"></a-entity>
 
-    <!-- Ground plane -->
-    <a-plane position="0 0 0" rotation="-90 0 0" width="100" height="100" color="#7BC8A4"></a-plane>
+      <!-- Lighting -->
+      <a-entity light="type: ambient; intensity: 0.5"></a-entity>
+      <a-entity light="type: directional; intensity: 0.8" position="0 10 5"></a-entity>
 
-    <!-- Debug cube -->
-    <a-box position="0 1 0" depth="1" height="1" width="1" color="#4CC3D9"></a-box>
-  
-    <!-- Lighting -->
-    <a-entity light="type: ambient; intensity: 0.8"></a-entity>
-    <a-entity light="type: directional; intensity: 0.6" position="1 3 2"></a-entity>
+      <!-- Cube -->
+      <a-box position="0 1 -3" rotation="0 45 0" color="#4CC3D9"></a-box>
 
-    <!-- Camera -->
-    <a-entity camera look-controls wasd-controls position="0 10 20"></a-entity>
-
-    <!-- Model placeholder -->
-    <a-entity id="model" position="0 0 0" scale="1 1 1"></a-entity>
-
-  </a-scene>
-
-  <script>
-  // Get the model URL from the query parameter
-  const urlParams = new URLSearchParams(window.location.search);
-  const modelUrl = urlParams.get('model');
-
-  if (modelUrl) {
-    const modelEntity = document.getElementById('model');
-    const decodedUrl = decodeURIComponent(modelUrl);
-
-    console.log("Trying to load model:", decodedUrl);
-    modelEntity.setAttribute('gltf-model', decodedUrl);
-
-    modelEntity.addEventListener('model-error', (e) => {
-      console.error("Model failed to load:", e.detail.src);
-      alert("⚠️ Failed to load the model. Check if the .glb URL is correct and CORS is enabled.");
-    });
-
-    modelEntity.addEventListener('model-loaded', () => {
-      console.log("✅ Model loaded successfully.");
-    });
-  } else {
-    alert("No model specified in the URL.");
-  }
-  </script>
-</body>
+      <!-- Ground -->
+      <a-plane position="0 0 -4" rotation="-90 0 0" width="10" height="10" color="#7BC8A4"></a-plane>
+    </a-scene>
+  </body>
 </html>
