@@ -4,21 +4,50 @@
   <meta charset="utf-8">
   <title>VR Clothes Viewer</title>
   <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aframe-extras@6.1.1/dist/aframe-extras.controls.min.js"></script>
   </head> 
   <body>
     <a-scene vr-mode-ui="enabled: true">
-      <!-- Camera -->
-      <a-entity camera look-controls wasd-controls position="0 3.5 5"></a-entity>
+     
+      <!-- CAMERA RIG: Moves with controllers in VR and also allows WASD on desktop -->
+      <a-entity id="cameraRig" movement-controls position="0 1.6 5">
+        
+        <!-- Main camera -->
+        <a-entity 
+          id="camera" 
+          camera 
+          wasd-controls 
+          look-controls="pointerLockEnabled: true"
+          position="0 0 0">
+        </a-entity>
+        
+        <!-- Left hand (used for rotation) -->
+        <a-entity 
+          laser-controls="hand: left"
+          oculus-touch-controls="hand: left"
+          vive-controls="hand: left"
+          windows-motion-controls="hand: left"
+          thumbstick-rotate>
+        </a-entity>
 
-      <!-- Lighting -->
-      <a-entity light="type: ambient; intensity: 0.5"></a-entity>
-      <a-entity light="type: directional; intensity: 0.8" position="0 10 5"></a-entity>
+        <!-- Right hand (used for movement) -->
+        <a-entity 
+          laser-controls="hand: right"
+          oculus-touch-controls="hand: right"
+          vive-controls="hand: right"
+          windows-motion-controls="hand: right"
+          thumbstick-move>
+        </a-entity>
+      </a-entity>
 
-      <!-- Model placeholder -->
-      <a-entity id="model" position="0 0 0" scale="0.1 0.1 0.1"></a-entity>
-    </a-scene>
-  </body>
-  
+    <!-- Lighting -->
+    <a-entity light="type: ambient; intensity: 0.5"></a-entity>
+     <a-entity light="type: directional; intensity: 0.8" position="0 10 5"></a-entity>
+
+    <!-- Model placeholder -->
+    <a-entity id="model" position="0 0 0" scale="0.1 0.1 0.1"></a-entity>
+  </a-scene>
+    
   <script>
   // Get the model URL from the query parameter
   const urlParams = new URLSearchParams(window.location.search);
@@ -43,4 +72,45 @@
     alert("No model specified in the URL.");
   }
 </script>
+
+    <!-- Controller logic -->
+    <script>
+      // Register thumbstick-move component
+      AFRAME.registerComponent('thumbstick-move', {
+        init: function () {
+          this.el.addEventListener('thumbstickmoved', (evt) => {
+            const rig = document.querySelector('#cameraRig');
+            if (!rig) return;
+
+            const direction = evt.detail;
+            const delta = 0.1;
+
+            if (Math.abs(direction.y) > 0.95) {
+              const dirZ = direction.y < 0 ? -delta : delta;
+              rig.object3D.translateZ(dirZ);
+            }
+          });
+        }
+      });
+
+      // Register thumbstick-rotate component
+      AFRAME.registerComponent('thumbstick-rotate', {
+        init: function () {
+          this.el.addEventListener('thumbstickmoved', (evt) => {
+            const rig = document.querySelector('#cameraRig');
+            if (!rig) return;
+
+            const direction = evt.detail;
+            const deltaAngle = 2;
+
+            if (Math.abs(direction.x) > 0.95) {
+              const angle = direction.x > 0 ? -deltaAngle : deltaAngle;
+              rig.object3D.rotation.y += THREE.Math.degToRad(angle);
+            }
+          });
+        }
+      });
+    </script>
+ 
+</body> 
 </html>
