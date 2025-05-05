@@ -28,16 +28,29 @@
   </a-scene>
 
   <script>
-    // Get the model URL from the query parameter
-    const urlParams = new URLSearchParams(window.location.search);
-    const modelUrl = urlParams.get('model');
+    /<script>
+  // Get the model URL from the query parameter
+  const urlParams = new URLSearchParams(window.location.search);
+  const modelUrl = urlParams.get('model');
 
-    if (modelUrl) {
-      const modelEntity = document.getElementById('model');
-      modelEntity.setAttribute('gltf-model', decodeURIComponent(modelUrl));
-    } else {
-      alert("No model specified in the URL.");
-    }
+  if (modelUrl) {
+    const modelEntity = document.getElementById('model');
+    const decodedUrl = decodeURIComponent(modelUrl);
+
+    console.log("Trying to load model:", decodedUrl);
+    modelEntity.setAttribute('gltf-model', decodedUrl);
+
+    modelEntity.addEventListener('model-error', (e) => {
+      console.error("Model failed to load:", e.detail.src);
+      alert("⚠️ Failed to load the model. Check if the .glb URL is correct and CORS is enabled.");
+    });
+
+    modelEntity.addEventListener('model-loaded', () => {
+      console.log("✅ Model loaded successfully.");
+    });
+  } else {
+    alert("No model specified in the URL.");
+  }
   </script>
 </body>
 </html>
