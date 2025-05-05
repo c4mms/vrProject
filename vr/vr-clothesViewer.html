@@ -8,28 +8,32 @@
  
   <script>
     // Get the model URL from the query parameter
-    const urlParams = new URLSearchParams(window.location.search);
-    const modelUrl = urlParams.get('model');
-  
-    if (modelUrl) {
-      const modelEntity = document.getElementById('model');
-      const decodedUrl = decodeURIComponent(modelUrl);
-  
-      console.log("Trying to load model:", decodedUrl);
-      modelEntity.setAttribute('gltf-model', decodedUrl);
-  
-      modelEntity.addEventListener('model-error', (e) => {
-        console.error("Model failed to load:", e.detail.src);
-        alert("Failed to load the model. Check if the .glb URL is correct and CORS is enabled.");
-      });
-  
-      modelEntity.addEventListener('model-loaded', () => {
-        console.log("Model loaded successfully.");
+    window.addEventListener('DOMContentLoaded', () => {
+  const urlParams = new URLSearchParams(window.location.search);
+  const modelUrl = urlParams.get('model');
+
+  if (modelUrl) {
+    const modelEntity = document.getElementById('model');
+    const decodedUrl = decodeURIComponent(modelUrl);
+    console.log("Trying to load model:", decodedUrl);
+    modelEntity.setAttribute('gltf-model', decodedUrl);
+
+    modelEntity.addEventListener('model-error', (e) => {
+      console.error("Model failed to load:", e.detail.src);
+      alert("Failed to load the model. Check if the .glb URL is correct and CORS is enabled.");
+    });
+
+    modelEntity.addEventListener('model-loaded', () => {
+      console.log("Model loaded successfully.");
+      document.getElementById('loadingOverlay').style.opacity = '0';
+      setTimeout(() => {
         document.getElementById('loadingOverlay').style.display = 'none';
-      });
-    } else {
-      alert("No model specified in the URL.");
-    }
+      }, 1000);
+    });
+  } else {
+    alert("No model specified in the URL.");
+  }
+});
   
     // Register thumbstick-move component
     AFRAME.registerComponent('thumbstick-move', {
