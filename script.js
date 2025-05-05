@@ -217,7 +217,7 @@ function renderCategoryProducts(category, containerId, showAll = false) {
       const card = document.createElement("div");
       card.className = "product-card";
 
-       const vrButton = product.vr ? `<button class="vr-button" onclick="startVR('${product.modelUrl}')">Try in VR</button>` : "";
+       const vrButton = product.vr ? `<button class="vr-button" onclick="startVR('${product.glbPath}')">Try in VR</button>` : "";
 
       card.innerHTML = `
         <a href="product.html?id=${id}" class="product-link">
@@ -237,8 +237,8 @@ function renderCategoryProducts(category, containerId, showAll = false) {
 }
 
 // Function to open VR viewer with the model URL
-function startVR(modelUrl) {
-  const encoded = encodeURIComponent(modelUrl);
+function startVR(glbPath) {
+  const encoded = encodeURIComponent(glbPath);
   window.open(`vr/vr-clothesViewer.html?model=${encoded}`, '_blank');
 }
 
