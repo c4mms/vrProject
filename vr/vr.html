@@ -42,24 +42,37 @@
   }
 });
 
-  window.addEventListener('load', () => {
-    const scene = document.querySelector('a-scene');
-    if (scene) {
-      scene.addEventListener('loaded', () => {
-        console.log('Scene fully loaded');
-      });
-    }
-  });
+window.addEventListener('load', () => {
+  const scene = document.querySelector('a-scene');
+  if (scene) {
+    scene.addEventListener('loaded', () => {
+      console.log('Scene fully loaded');
+      const overlay = document.getElementById('loadingOverlay');
+      overlay.style.opacity = '0';
+      setTimeout(() => {
+        overlay.style.display = 'none';
+      }, 1000); // Match the CSS transition duration
+    });
+  }
+});
+
   </script>
 </head>
 <body>
   <a-scene vr-mode-ui="enabled: true">
 
-    <!-- Loading Screen -->
-    <a-entity loading-screen="enabled: true">
-      <a-ring position="0 0 -5" radius-inner="0.1" radius-outer="0.2" color="yellow" animation="property: rotation; to: 0 360 0; dur: 2000; loop: true"></a-ring>
-      <a-text value="Loading..." align="center" position="0 1 -5" color="white" width="6"></a-text>
-    </a-entity>
+    <!-- Custom Loading Overlay -->
+    <div id="loadingOverlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: linear-gradient(#ffffff, #dddddd); color: #333; display: flex;
+      flex-direction: column; align-items: center; justify-content: center; z-index: 9999;
+      font-family: sans-serif; text-align: center; padding: 2rem;
+      opacity: 1; transition: opacity 1s ease;">
+      <h1 style="margin-bottom: 1rem;">🛍️ VR Showroom</h1>
+      <p style="max-width: 500px; font-size: 1.2rem;">
+        Please wait while the showroom is loading...
+      </p>
+    </div>
+
       
     <a-assets timeout="20000">
       <a-asset-item id="showroom-model" src="https://showroomcd.s3.amazonaws.com/showroom.glb"></a-asset-item>
