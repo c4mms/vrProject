@@ -3,7 +3,7 @@
 This project is a web-based demo for an innovative e-commerce experience that allows users to **try on clothes in Virtual Reality** (VR) before purchasing.
 It combines a traditional online shopping layout with VR technology to enhance user engagement and shopping confidence.
 
-![Screen](C:\Users\Camilla\OneDrive\Immagini\Screen_Demo.jpeg)
+![Screen](img\Screen_Demo.jpeg)
 
 ## Features
 - Standard e-commerce interface (homepage, collections, product pages);
@@ -91,7 +91,7 @@ This project was created as an experimental blend of fashion, design, and immers
 
 This project was developed by a two-person team:
 
-3D Models: Created in Blender by **Daniele**
+3D Models: Created in Blender by **Daniele Turkaj**
 
 Web Development & VR Integration: Handled by **Camilla Molinengo**
 
