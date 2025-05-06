@@ -62,8 +62,8 @@ To ensure your model loads properly in A-Frame or similar frameworks:
 ### Set the Bucket policy
 To make the files in your S3 bucket publicly accessible:
 
--In the S3 Bucket, go to **Permissions** > **Bucket Policy**.
-Add the following JSON and click **Save**:
+- In the S3 Bucket, go to **Permissions** > **Bucket Policy**.
+- Add the following JSON and click **Save**:
 ```json
 {
   "Version": "2012-10-17",
