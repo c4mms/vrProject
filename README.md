@@ -3,7 +3,7 @@
 This project is a web-based demo for an innovative e-commerce experience that allows users to **try on clothes in Virtual Reality** (VR) before purchasing.
 It combines a traditional online shopping layout with VR technology to enhance user engagement and shopping confidence.
 
-![Screen](img\Screen_Demo.jpeg)
+![Screen](img/Screen_Demo.jpeg)
 
 ## Features
 - Standard e-commerce interface (homepage, collections, product pages);
@@ -58,6 +58,27 @@ To ensure your model loads properly in A-Frame or similar frameworks:
    - Type --> System-Defined
    - Key --> Content-Type
    - Value --> model/gltf-binary
+
+### Set the Bucket policy
+To make the files in your S3 bucket publicly accessible:
+
+-In the S3 Bucket, go to **Permissions** > **Bucket Policy**.
+Add the following JSON and click **Save**:
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "PublicReadGetObject",
+      "Effect": "Allow",
+      "Principal": "*",
+      "Action": "s3:GetObject",
+      "Resource": "arn:aws:s3:::NAMEBUCKET/*"
+    }
+  ]
+}
+ ```
+> **Note:** replace NAMEBUCKET with your S3 bucket name.
 
 ### Set the CORS Policy (Cross-Origin Resource Sharing)
 To allow your website to access the file from another origin (especially important for A-Frame/WebXR):
