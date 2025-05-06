@@ -3,40 +3,30 @@
 This project is a web-based demo for an innovative e-commerce experience that allows users to **try on clothes in Virtual Reality** (VR) before purchasing.
 It combines a traditional online shopping layout with VR technology to enhance user engagement and shopping confidence.
 
+![Screen](C:\Users\Camilla\OneDrive\Immagini\Screen_Demo.jpeg)
+
 ## Features
-- Standard e-commerce interface (homepage, collections, product pages).
+- Standard e-commerce interface (homepage, collections, product pages);
 
-- "Try on in VR" button next to each product ("Add to Cart" button).
+- "Try on in VR" button to enter the experience;
 
-- 3D clothing models designed in Blender.
+- 3D clothing models designed in Blender;
 
-- VR try-on experience integrated via an iframe embedding the models/scenes.
+- VR try-on experience powered by A-Frame and WebXR.
 
 ## Usage
-
+### Access the Demo
 You can access the demo through this link:  
 [https://c4mms.github.io/vrProject/](https://c4mms.github.io/vrProject/)
 
-### Best Experience
-For the best experience, open the website directly from the browser on a **VR headset** (e.g., **Meta Quest 2**).
 
-### Accessing the VR Try-On Feature
+### Accessing the VR Feature
 The VR experience is available in two ways:
   1. **Visit the VR page** directly on the website.
   2. **Click the "Try on in VR" button** next to the product that ofefr this option.
 
 > **Note:** While the VR feature works on **PC**, **iPad**, and **smartphones**, it is not as optimal as when using a VR headset.
 
-
-## Installation (for Developers)
-If you want to run the project locally:
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/yourname/yourproject.git
-2. Open `index.html` directly in your browser, or use a local server (e.g., VSCode Live Server extension).
-
-> **Note:** If you just want to visit the website, no installation is needed — go to [https://c4mms.github.io/vrProject/](https://c4mms.github.io/vrProject/).
 
 ## Technologies Used
 - **HTML**: The website structure was built using HTML.
@@ -48,15 +38,62 @@ If you want to run the project locally:
 - **Meta Quest 2**: Recommended for the best VR experience. 
 - **Supported Browsers**: The VR feature works in WebXR-compatible browsers like **Google Chrome** and **Mozilla Firefox**.
   
-# Download the 3D Model
-You can download the 3D model here: [Showroom.glb](https://drive.google.com/file/d/1IjhwFi9HTBL5jwb2elDkyahcenAn4TJO/view?usp=drive_link)
+## Hosting 3D Models with AWS S3
+To host .glb (GLTF binary) files and embed them in your VR scenes:
+### Step 1: Upload the .glb model to an AWS S3 Bucket
+1. Go to [AWS S3 Console](https://eu-north-1.console.aws.amazon.com/s3/home?region=eu-north-1)
 
+2. Choose (or create) a bucket.
+
+3. Upload your .glb file (e.g., jacket.glb).
+
+4. After uploading, click on the file name.
+
+### Step 2: Set the File’s Metadata
+To ensure your model loads properly in A-Frame or similar frameworks:
+
+1. Click “Properties” > Scroll to Metadata.
+
+2. Add a Metadata:
+   - Type --> System-Defined
+   - Key --> Content-Type
+   - Value --> model/gltf-binary
+
+### Set the CORS Policy (Cross-Origin Resource Sharing)
+To allow your website to access the file from another origin (especially important for A-Frame/WebXR):
+
+- In the S3 Bucket, go to **Permissions** > **CORS Configuration**.
+- Add the following JSON and click **Save**:
+```json
+[
+  {
+    "AllowedHeaders": ["*"],
+    "AllowedMethods": ["GET"],
+    "AllowedOrigins": ["*"],
+    "ExposeHeaders": [],
+  }
+]
+ ```
+  > **Note:** This allows any domain to load your 3D models. For more security, replace "*" in "AllowedOrigins" with your actual domain.
 
 ## Future Improvements (Ideas)
 
-- Full-body avatar customization for a more realistic try-on experience.
-- ?
-- ?
+- Full-body avatar customization (e.g., height, body shape).
+- Add physics (cloth simulation, realistic collisions).
+- Enable collision detection in the VR showroom.
+- Backend connection for saving favorites or avatar profiles.
+
+## Motivation
+
+This project was created as an experimental blend of fashion, design, and immersive technology. Our goal was to rethink the online shopping experience by giving users a sense of presence and realism through VR — transforming browsing into something more interactive and engaging.
+
+## Credits
+
+This project was developed by a two-person team:
+
+3D Models: Created in Blender by **Daniele**
+
+Web Development & VR Integration: Handled by **Camilla Molinengo**
 
 ## License
 
