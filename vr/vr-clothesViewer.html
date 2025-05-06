@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <title>VR Clothes Viewer</title>
   <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/aframe-extras@6.1.1/dist/aframe-extras.controls.min.js"></script>
- 
+  <script src="https://cdn.aframe.io/components/hand-controls/hand-controls.min.js"></script>
+
   <script>
     // Get the model URL from the query parameter
     window.addEventListener('DOMContentLoaded', () => {
@@ -35,41 +35,42 @@
   }
 });
   
-    // Register thumbstick-move component
-    AFRAME.registerComponent('thumbstick-move', {
+ // Component for rotating the rig with the left controller joystick
+    AFRAME.registerComponent('joystick-rotation', {
       init: function () {
-        this.el.addEventListener('thumbstickmoved', (evt) => {
-          const rig = document.querySelector('#cameraRig');
-          if (!rig) return;
+        const rig = document.querySelector('#rig');
 
-          const direction = evt.detail;
-          const delta = 0.1;
-
-          if (Math.abs(direction.y) > 0.95) {
-            const dirZ = direction.y < 0 ? -delta : delta;
-            rig.object3D.translateZ(dirZ);
+        this.el.addEventListener('axismove', (event) => {
+          const x = event.detail.axis[2];
+          if (Math.abs(x) > 0.1) {
+            rig.object3D.rotation.y -= x * 0.03;
           }
         });
       }
     });
 
-      // Register thumbstick-rotate component
-      AFRAME.registerComponent('thumbstick-rotate', {
-        init: function () {
-          this.el.addEventListener('thumbstickmoved', (evt) => {
-            const rig = document.querySelector('#cameraRig');
-            if (!rig) return;
+    // Component for moving the rig with the right controller joystick
+    AFRAME.registerComponent('joystick-movement', {
+      tick: function () {
+        const rig = document.querySelector('#rig');
+        const head = document.querySelector('#head');
+        const controller = document.querySelector('#rightHand');
 
-            const direction = evt.detail;
-            const deltaAngle = 2;
+        if (!controller || !controller.components['tracked-controls']) return;
 
-            if (Math.abs(direction.x) > 0.95) {
-              const angle = direction.x > 0 ? -deltaAngle : deltaAngle;
-              rig.object3D.rotation.y += THREE.Math.degToRad(angle);
-            }
-          });
+        const gamepad = controller.components['tracked-controls'].controller;
+        if (gamepad && gamepad.axes.length >= 4) {
+          const y = gamepad.axes[3];
+          const x = gamepad.axes[2];
+
+          if (Math.abs(x) > 0.1 || Math.abs(y) > 0.1) {
+            const dir = new THREE.Vector3(x * 0.1, 0, -y * 0.1);
+            dir.applyQuaternion(head.object3D.quaternion);
+            rig.object3D.position.add(dir);
+          }
         }
-      });
+      }
+    });
     
     // Fade out the loading screen after the scene is fully loaded
     window.addEventListener('load', () => {
@@ -101,7 +102,7 @@
         font-family: monospace;
       }
         
-        .loader {
+      .loader {
       border: 6px solid #f3f3f3;
       border-top: 6px solid #555;
       border-radius: 50%;
@@ -115,66 +116,59 @@
   </style> 
   </head> 
   <body>          
-       <!-- Loading Overlay UI-->
-          <div id="loadingOverlay" style="
-          position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-          background: linear-gradient(to bottom, #f7f7f7, #e2e2e2); color: #333;
-          display: flex; flex-direction: column; align-items: center; justify-content: center;
-          z-index: 9999; font-family: 'Segoe UI', sans-serif; text-align: center; padding: 2rem;
-          opacity: 1; transition: opacity 1s ease;
-        ">
-          <div style="margin-bottom: 1.5rem;">
-            <h1 style="margin: 0; font-size: 2.2rem;">VR Showroom Viewer</h1>
-            <p style="margin-top: 0.5rem; font-size: 1.2rem;">Loading your immersive experience...</p>
-            <div class="loader" style="margin-top: 1.5rem;"></div>
-          </div>
-        
-          <div style="max-width: 500px; background: #fff; padding: 1.5rem 2rem; border-radius: 12px;
-                      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); text-align: left;">
-            <h3 style="margin-top: 0; font-size: 1.2rem;">How to explore:</h3>
-            <ul style="list-style: none; padding-left: 0; line-height: 1.6; font-size: 1rem;">
-              <li>Click the <strong>“Enter VR”</strong> button (bottom right corner)</li>
-              <li><strong>Right controller:</strong> Move forward, backward, left, and right</li>
-              <li><strong>Left controller:</strong> Rotate your view</li>
-              <li style="margin-bottom: 2em;"></li> <!-- blank space -->
-              <li style="margin-bottom: 2em;"></li> <!-- blank space -->
-              <li><strong>On desktop:</strong> Use <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> keys to walk, and your mouse to look around</li>
-            </ul>
-          </div>
-          </div>
+      <!-- Loading Overlay UI -->
+      <div id="loadingOverlay" style="
+        position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+        background: linear-gradient(to bottom, #f7f7f7, #e2e2e2); color: #333;
+        display: flex; flex-direction: column; align-items: center; justify-content: center;
+        z-index: 9999; font-family: 'Segoe UI', sans-serif; text-align: center; padding: 2rem;
+        opacity: 1; transition: opacity 1s ease;">
+        <div style="margin-bottom: 1.5rem;">
+          <h1 style="margin: 0; font-size: 2.2rem;">VR Showroom Viewer</h1>
+          <p style="margin-top: 0.5rem; font-size: 1.2rem;">Loading your immersive experience...</p>
+          <div class="loader" style="margin-top: 1.5rem;"></div>
+        </div>
+        <div style="max-width: 500px; background: #fff; padding: 1.5rem 2rem; border-radius: 12px;
+                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); text-align: left;">
+          <h3 style="margin-top: 0; font-size: 1.2rem;">How to explore:</h3>
+          <ul style="list-style: none; padding-left: 0; line-height: 1.6; font-size: 1rem;">
+            <li>Click the <strong>“Enter VR”</strong> button (bottom right corner)</li>
+            <li><strong>Right controller:</strong> Move forward, backward, left, and right</li>
+            <li><strong>Left controller:</strong> Rotate your view</li>
+            <li style="margin-bottom: 2em;"></li>
+            <li><strong>On desktop:</strong> Use <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> keys to walk, and your mouse to look around</li>
+          </ul>
+        </div>
+      </div>
 
     <a-scene vr-mode-ui="enabled: true">
-     <!-- Camera rig -->
-      <a-entity id="cameraRig" movement-controls position="0 1.6 5">
+      <!-- Lighting -->
+      <a-entity light="type: ambient; intensity: 0.7"></a-entity>
+      <a-entity light="type: directional; intensity: 0.5" position="1 3 2"></a-entity>
+
+      <!-- 3D model -->
+      <a-entity id="model" position="0 0 0" scale="0.1 0.1 0.1"></a-entity>
+      
+      <!-- Camera rig -->
+      <a-entity id="rig" position="0 3 10" joystick-movement>
         
         <!-- Camera (user's head) -->
-        <a-entity id="camera" camera wasd-controls position="0 0 0"></a-entity>
+         <a-entity id="head" camera look-controls wasd-controls position="0 0 0"></a-entity>
         
-        <!-- Left hand (used for rotation) -->
-        <a-entity 
-          laser-controls="hand: left"
-          oculus-touch-controls="hand: left"
-          vive-controls="hand: left"
-          windows-motion-controls="hand: left"
-          thumbstick-rotate>
-        </a-entity>
+        <!-- Right Controller (Move) -->
+        <a-entity id="rightHand"
+                hand-controls="hand: right"
+                laser-controls="hand: right"
+                tracked-controls="hand: right"></a-entity>
 
-        <!-- Right hand (used for movement) -->
-        <a-entity 
-          laser-controls="hand: right"
-          oculus-touch-controls="hand: right"
-          vive-controls="hand: right"
-          windows-motion-controls="hand: right"
-          thumbstick-move>
-        </a-entity>
+        <!-- Left Controller (Rotate) -->
+        <a-entity id="leftHand"
+                hand-controls="hand: left"
+                laser-controls="hand: left"
+                tracked-controls="hand: left"
+                joystick-rotation></a-entity>
       </a-entity>
 
-    <!-- Lighting -->
-    <a-entity light="type: ambient; intensity: 0.5"></a-entity>
-     <a-entity light="type: directional; intensity: 0.8" position="0 10 5"></a-entity>
-
-    <!-- 3D model -->
-    <a-entity id="model" position="0 0 0" scale="0.1 0.1 0.1"></a-entity>
   </a-scene> 
 </body> 
 </html>
