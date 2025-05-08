@@ -222,26 +222,26 @@ try{
 // Render category pages
 function renderProducts() {
   const path = window.location.pathname;
+  const showAll = !(path === "/" || path.endsWith("index.html"));
 
   if (document.getElementById("spring-products")) {
-    const showAll = path.includes("collection2025.html");
     renderCategoryProducts("springCollection25", "spring-products", showAll);
   }
 
   if (document.getElementById("woman-products")) {
-    renderCategoryProducts("woman", "woman-products");
+    renderCategoryProducts("woman", "woman-products", showAll);
   }
 
   if (document.getElementById("man-products")) {
-    renderCategoryProducts("man", "man-products");
+    renderCategoryProducts("man", "man-products",showAll);
   }
 
   if (document.getElementById("bags-products")) {
-    renderCategoryProducts("bags", "bags-products");
+    renderCategoryProducts("bags", "bags-products", showAll);
   }
 }
 
-function renderCategoryProducts(category, containerId, showAll = false) {
+function renderCategoryProducts(category, containerId, showAll = true) {
   const container = document.getElementById(containerId);
 
   if (!container) {
