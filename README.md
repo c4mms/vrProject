@@ -1,6 +1,6 @@
 # Virtual Try-On E-Shop (Demo)
 ## Description
-This project is a web-based demo for an innovative e-commerce experience that allows users to **try on clothes in Virtual Reality** (VR) before purchasing.
+This project is a web-based demo for an innovative e-commerce experience that allows users to **see clothes in Virtual Reality** (VR) before purchasing.
 It combines a traditional online shopping layout with VR technology to enhance user engagement and shopping confidence.
 
 ![Screen](img/Screen_Demo.jpeg)
@@ -12,7 +12,7 @@ It combines a traditional online shopping layout with VR technology to enhance u
 
 - 3D clothing models designed in Blender;
 
-- VR try-on experience powered by A-Frame and WebXR.
+- VR try-on experience powered by A-Frame.
 
 ## Usage
 ### Access the Demo
@@ -22,8 +22,8 @@ You can access the demo through this link:
 
 ### Accessing the VR Feature
 The VR experience is available in two ways:
-  1. **Visit the VR page** directly on the website.
-  2. **Click the "Try on in VR" button** next to the product that ofefr this option.
+  1. **Click the "Experience now" button** to visit the showroom.
+  2. **Click the "Try in VR" button** next to the product that ofefr this option.
 
 > **Note:** While the VR feature works on **PC**, **iPad**, and **smartphones**, it is not as optimal as when using a VR headset.
 
@@ -33,10 +33,9 @@ The VR experience is available in two ways:
 - **CSS**: Used for styling the website (if applicable).
 - **JavaScript**: Used for interactive elements.
 - **A-Frame**: A web framework built on top of HTML and JavaScript for creating 3D and VR experiences.
-- **WebXR API**: JavaScript API that enables VR and AR device integration for immersive web experiences.
 - **Blender**: Used to create the 3D clothing models displayed in the VR try-on feature.
 - **Meta Quest 2**: Recommended for the best VR experience. 
-- **Supported Browsers**: The VR feature works in WebXR-compatible browsers like **Google Chrome** and **Mozilla Firefox**.
+- **Supported Browsers**: The VR feature works in WebXR-compatible browsers like **Meta Browser**, **Google Chrome** and **Mozilla Firefox**.
   
 ## Hosting 3D Models with AWS S3
 To host .glb (GLTF binary) files and embed them in your VR scenes:
@@ -45,21 +44,17 @@ To host .glb (GLTF binary) files and embed them in your VR scenes:
 
 2. Choose (or create) a bucket.
 
-3. Upload your .glb file (e.g., jacket.glb).
+3.  Set the File’s Metadata :
+   - Scroll to Metadata;
+   - Add a Metadata:
+       Type --> System-Defined
+       Key --> Content-Type
+       Value --> model/gltf-binary
 
-4. After uploading, click on the file name.
+4. Upload your .glb file (e.g., jacket.glb).
 
-### Step 2: Set the File’s Metadata
-To ensure your model loads properly in A-Frame or similar frameworks:
 
-1. Click “Properties” > Scroll to Metadata.
-
-2. Add a Metadata:
-   - Type --> System-Defined
-   - Key --> Content-Type
-   - Value --> model/gltf-binary
-
-### Set the Bucket policy
+### Step 2: Set the Bucket policy
 To make the files in your S3 bucket publicly accessible:
 
 - In the S3 Bucket, go to **Permissions** > **Bucket Policy**.
@@ -80,7 +75,7 @@ To make the files in your S3 bucket publicly accessible:
  ```
 > **Note:** replace NAMEBUCKET with your S3 bucket name.
 
-### Set the CORS Policy (Cross-Origin Resource Sharing)
+### Step 3: Set the CORS Policy (Cross-Origin Resource Sharing)
 To allow your website to access the file from another origin (especially important for A-Frame/WebXR):
 
 - In the S3 Bucket, go to **Permissions** > **CORS Configuration**.
