@@ -137,7 +137,7 @@ let products = {
   },
   "13": {
     "id": 13,
-    "name": "MEDIUM LE CITY BAG IN BORDEAUX",
+    "name": "BALENCIAGA - MEDIUM LE CITY BAG IN BORDEAUX",
     "price": "2390 €",
     "description": "Medium Le City Bag - Bordeaux Arena Lambskin - Two Hand-Braided Leather Handles - Adjustable and Removable Shoulder Strap (Drop: 52.8 cm) - Brass Hardware - Zip Closure with Knotted Leather Pull - Front Zip Pocket with Knotted Leather Pull - Interior Zip Pocket - Cotton Canvas Lining - Made in Italy",
     "image": "img/sp4.jpg",
@@ -157,11 +157,32 @@ let products = {
   },
   "15": {
     "id": 15,
-    "name": "TUXEDO JACKET IN WOOL",
+    "name": "VALENTINO - TUXEDO JACKET IN WOOL",
     "price": "3200 €",
     "description": "Tuxedo Jacket - Wool - Regular Fit - Fully Lined - Shawl Lapel - Single-Button Closure - Two Front Flap Pockets - One Chest Pocket (Wearer's Left Side) - 100% Virgin Wool - Lining: 75% Acetate, 25% Silk - Made in Italy",
     "image": "img/sp6.jpg",
     "category": "springCollection25",
+    "allSizes": ["44", "46", "48", "50", "52", "54", "56"],
+    "availableSizes": ["44", "46", "48", "50", "52", "54"]
+  },
+  "16": {
+    "id": 16,
+    "name": "ANN DEMEULEMEESTER - MARK HIGH COMFORT SHIRT",
+    "price": "450 €",
+    "description": "Mark High Comfort Shirt - Black - Classic Collar - Button Closure - Twisted Front Chest Pocket - Long Sleeves - Buttoned Cuffs - 100% Cotton - Made in Italy",
+    "image": "img/sp2.jpg",
+    "category": "man",
+    "allSizes": ["44", "46", "48", "50", "52", "54", "56"],
+    "availableSizes": ["50"]
+    "vr": false
+  },
+  "17": {
+    "id": 17,
+    "name": "VALENTINO - TUXEDO JACKET IN WOOL",
+    "price": "3200 €",
+    "description": "Tuxedo Jacket - Wool - Regular Fit - Fully Lined - Shawl Lapel - Single-Button Closure - Two Front Flap Pockets - One Chest Pocket (Wearer's Left Side) - 100% Virgin Wool - Lining: 75% Acetate, 25% Silk - Made in Italy",
+    "image": "img/sp6.jpg",
+    "category": "man",
     "allSizes": ["44", "46", "48", "50", "52", "54", "56"],
     "availableSizes": ["44", "46", "48", "50", "52", "54"]
   }
