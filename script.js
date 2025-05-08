@@ -115,13 +115,13 @@ let products = {
     "allSizes": ["36", "38", "40", "42", "44", "46"],
     "availableSizes": ["38", "40"]
   },
-  "11": {
-    "id": 11,
+  "16": {
+    "id": 16,
     "name": "ANN DEMEULEMEESTER - MARK HIGH COMFORT SHIRT",
     "price": "450 €",
     "description": "Mark High Comfort Shirt - Black - Classic Collar - Button Closure - Twisted Front Chest Pocket - Long Sleeves - Buttoned Cuffs - 100% Cotton - Made in Italy",
     "image": "img/sp2.jpg",
-    "category": "springCollection25",
+    "category": "man",
     "allSizes": ["44", "46", "48", "50", "52", "54", "56"],
     "availableSizes": ["50"]
   },
@@ -147,13 +147,15 @@ let products = {
   },
   "14": {
     "id": 14,
-    "name": "VALENTINO - LONG DRESS IN PLUSDEPOIS PRINTED CHIFFON",
-    "price": "16000 €",
-    "description": "Long Chiffon Dress - Plusdepois Print - Hand-Draped Bodice - Ruffled Skirt Details - Side Zip Closure - Plusdepois Chiffon (100% Silk) - Lined in Stretch Silk Georgette (91% Silk, 9% Elastane)",
-    "image": "img/sp5.jpg",
-    "category": "springCollection25",
-    "allSizes": ["36", "38", "40", "42", "44", "46", "48", "50"],
-    "availableSizes": ["40", "42", "44"]
+    "name": "GIVENCHY - DRAPPED SATIN GOWN",
+    "price": "4500 €",
+    "description": "Satin – Draped Design – Open Back – Asymmetric Crystal-Embroidered Straps – Invisible Side Zip – Front Slit – Flowing Long Skirt – Unlined – Fit: Slim with Fluid Skirt – Made in France",
+    "image": "img/w3.jpg",
+    "category": "woman",
+    "allSizes": ["38", "40", "42", "44", "46", "48"],
+    "availableSizes": ["38", "40", "44"],
+    "vr": true,
+    "glbPath": "https://showroomcd.s3.amazonaws.com/vestitiglb/minidress.glb"
   },
   "15": {
     "id": 15,
@@ -161,10 +163,34 @@ let products = {
     "price": "3200 €",
     "description": "Tuxedo Jacket - Wool - Regular Fit - Fully Lined - Shawl Lapel - Single-Button Closure - Two Front Flap Pockets - One Chest Pocket (Wearer's Left Side) - 100% Virgin Wool - Lining: 75% Acetate, 25% Silk - Made in Italy",
     "image": "img/sp6.jpg",
-    "category": "springCollection25",
+    "category": "man",
     "allSizes": ["44", "46", "48", "50", "52", "54", "56"],
     "availableSizes": ["44", "46", "48", "50", "52", "54"]
   }
+  "11":{
+    "id": 11,
+    "name": "ANN DEMEULEMEESTER - ERBE TRUCKET JACKET",
+    "price": "2250 €",
+    "description": "Erbe Trucket Jacket - Black - Grained Leather - Collar - Removable Signature Grosgrain Ribbon - Button Closure - Button Flap Chest Pockets - Side Pockets - Buttoned Cuffs - Fitted - 100% Sheep Leather - Made in Italy",
+    "image": "img/m3.jpg",
+    "category": "springCollection25",
+    "allSizes": ["44", "46", "48", "50", "52", "54", "56"],
+    "availableSizes": ["46", "48", "50", "52"],
+    "vr": true,
+    "glbPath": "https://showroomcd.s3.amazonaws.com/vestitiglb/tshirt.glb"
+  },
+"16": {
+    "id": 16,
+    "name": "ACNE STUDIOS - DOWN JACKET",
+    "price": "790 €",
+    "description": "Garment-Dyed Nylon – Logo Embroidery on Chest – Centre-Front Zipper & Snap Button Closure – Front & Internal Pockets – Fitted Fit – Below Waist Length – Model is 188 cm / 6'2 and Wears Size 46 – Shell: 100% Nylon – Lining: 100% Recycled Nylon – Filling: 90% Recycled Down, 10% Recycled Feathers – Made in Italy",
+    "image": "img/m1.jpg",
+    "category": "man",
+    "allSizes": ["42", "44", "46", "48", "50", "52", "54"],
+    "availableSizes": ["42", "44", "46", "48", "50"],
+    "vr": true,
+    "glbPath": "https://showroomcd.s3.amazonaws.com/vestitiglb/pufferjacket.glb"
+  },
 }
 
 renderProducts();// This renders the collections (woman, man, etc.)
