@@ -8,11 +8,11 @@ It combines a traditional online shopping layout with VR technology to enhance u
 ## Features
 - Standard e-commerce interface (homepage, collections, product pages);
 
-- "Try on in VR" button to enter the experience;
+- "Try on VR" button to enter the experience;
 
 - 3D clothing models designed in Blender;
 
-- VR try-on experience powered by A-Frame.
+- VR experience powered by A-Frame.
 
 ## Usage
 ### Access the Demo
@@ -46,10 +46,7 @@ To host .glb (GLTF binary) files and embed them in your VR scenes:
 
 3.  Set the File’s Metadata :
    - Properties > Scroll to Metadata;
-   - Add a Metadata:
-       Type --> System-Defined
-       Key --> Content-Type
-       Value --> model/gltf-binary
+   - Add a Metadata:   Type --> System-Defined      Key --> Content-Type      Value --> model/gltf-binary
 
 4. Upload your .glb file (e.g., jacket.glb).
 
@@ -97,7 +94,8 @@ To allow your website to access the file from another origin (especially importa
 - Full-body avatar customization (e.g., height, body shape).
 - Add physics (cloth simulation, realistic collisions).
 - Enable collision detection in the VR showroom.
-- Backend connection for saving favorites or avatar profiles.
+- Implement user data storage using a database (e.g., to save favorites, avatar profiles)
+- Integrate session and persistent cookies to recognize returning users, personalize content, and support statistical or marketing functionalities.
 
 ## Motivation
 
