@@ -179,7 +179,7 @@ let products = {
     "vr": true,
     "glbPath": "https://showroomcd.s3.amazonaws.com/vestitiglb/tshirt.glb"
   },
-"16": {
+"17": {
     "id": 17,
     "name": "ACNE STUDIOS - DOWN JACKET",
     "price": "790 €",
