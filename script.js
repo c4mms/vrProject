@@ -196,7 +196,6 @@ let products = {
     "availableSizes": ["44", "46", "48", "50", "52", "54"],
     "vr": false
   },
-  },
   "18": {
     "id": 18,
     "name": "ANN DEMEULEMEESTER - MARK HIGH COMFORT SHIRT",
