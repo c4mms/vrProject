@@ -164,14 +164,15 @@ let products = {
   },
   "15": {
     "id": 15,
-    "name": "VALENTINO - TUXEDO JACKET IN WOOL",
-    "price": "3200 €",
-    "description": "Tuxedo Jacket - Wool - Regular Fit - Fully Lined - Shawl Lapel - Single-Button Closure - Two Front Flap Pockets - One Chest Pocket (Wearer's Left Side) - 100% Virgin Wool - Lining: 75% Acetate, 25% Silk - Made in Italy",
-    "image": "img/sp6.jpg",
-    "category": "man",
-    "allSizes": ["44", "46", "48", "50", "52", "54", "56"],
-    "availableSizes": ["44", "46", "48", "50", "52", "54"],
-    "vr": false
+    "name": "ACNE STUDIOS - DOWN JACKET",
+    "price": "790 €",
+    "description": "Garment-Dyed Nylon – Logo Embroidery on Chest – Centre-Front Zipper & Snap Button Closure – Front & Internal Pockets – Fitted Fit – Below Waist Length – Model is 188 cm / 6'2 and Wears Size 46 – Shell: 100% Nylon – Lining: 100% Recycled Nylon – Filling: 90% Recycled Down, 10% Recycled Feathers – Made in Italy",
+    "image": "img/m1.jpg",
+    "category": "springCollection25",
+    "allSizes": ["42", "44", "46", "48", "50", "52", "54"],
+    "availableSizes": ["42", "44", "46", "48", "50"],
+    "vr": true,
+    "glbPath": "https://showroomcd.s3.amazonaws.com/vestitiglb/pufferjacket.glb"
   },
   "16": {
     "id": 16,
@@ -186,15 +187,14 @@ let products = {
   },
   "17": {
     "id": 17,
-    "name": "ACNE STUDIOS - DOWN JACKET",
-    "price": "790 €",
-    "description": "Garment-Dyed Nylon – Logo Embroidery on Chest – Centre-Front Zipper & Snap Button Closure – Front & Internal Pockets – Fitted Fit – Below Waist Length – Model is 188 cm / 6'2 and Wears Size 46 – Shell: 100% Nylon – Lining: 100% Recycled Nylon – Filling: 90% Recycled Down, 10% Recycled Feathers – Made in Italy",
-    "image": "img/m1.jpg",
-    "category": "springCollection25",
-    "allSizes": ["42", "44", "46", "48", "50", "52", "54"],
-    "availableSizes": ["42", "44", "46", "48", "50"],
-    "vr": true,
-    "glbPath": "https://showroomcd.s3.amazonaws.com/vestitiglb/pufferjacket.glb"
+    "name": "VALENTINO - TUXEDO JACKET IN WOOL",
+    "price": "3200 €",
+    "description": "Tuxedo Jacket - Wool - Regular Fit - Fully Lined - Shawl Lapel - Single-Button Closure - Two Front Flap Pockets - One Chest Pocket (Wearer's Left Side) - 100% Virgin Wool - Lining: 75% Acetate, 25% Silk - Made in Italy",
+    "image": "img/sp6.jpg",
+    "category": "man",
+    "allSizes": ["44", "46", "48", "50", "52", "54", "56"],
+    "availableSizes": ["44", "46", "48", "50", "52", "54"],
+    "vr": false
   }
 }
 
