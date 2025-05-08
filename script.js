@@ -151,7 +151,7 @@ let products = {
     "price": "4500 €",
     "description": "Satin – Draped Design – Open Back – Asymmetric Crystal-Embroidered Straps – Invisible Side Zip – Front Slit – Flowing Long Skirt – Unlined – Fit: Slim with Fluid Skirt – Made in France",
     "image": "img/w3.jpg",
-    "category": "woman",
+    "category": "springCollection25",
     "allSizes": ["38", "40", "42", "44", "46", "48"],
     "availableSizes": ["38", "40", "44"],
     "vr": true,
@@ -180,12 +180,12 @@ let products = {
     "glbPath": "https://showroomcd.s3.amazonaws.com/vestitiglb/tshirt.glb"
   },
 "16": {
-    "id": 16,
+    "id": 17,
     "name": "ACNE STUDIOS - DOWN JACKET",
     "price": "790 €",
     "description": "Garment-Dyed Nylon – Logo Embroidery on Chest – Centre-Front Zipper & Snap Button Closure – Front & Internal Pockets – Fitted Fit – Below Waist Length – Model is 188 cm / 6'2 and Wears Size 46 – Shell: 100% Nylon – Lining: 100% Recycled Nylon – Filling: 90% Recycled Down, 10% Recycled Feathers – Made in Italy",
     "image": "img/m1.jpg",
-    "category": "man",
+    "category": "springCollection25",
     "allSizes": ["42", "44", "46", "48", "50", "52", "54"],
     "availableSizes": ["42", "44", "46", "48", "50"],
     "vr": true,
