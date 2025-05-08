@@ -111,7 +111,7 @@ let products = {
     "price": "1290 €",
     "description": "Sirka Deconstructed Asymmetric Skirt - Black - Ramage Jacquard - Front Ruffled Signature Self-Tie Wrap - Signature Self-Tie Grosgrain Belt - Asymmetric Hem - Back Draped Trail - Floor Length - 79% Viscose 21% Silk - Made in Italy",
     "image": "img/sp1.jpg",
-    "category": "woman",
+    "category": "springCollection25",
     "allSizes": ["36", "38", "40", "42", "44", "46"],
     "availableSizes": ["38", "40"]
   },
@@ -151,7 +151,7 @@ let products = {
     "price": "16000 €",
     "description": "Long Chiffon Dress - Plusdepois Print - Hand-Draped Bodice - Ruffled Skirt Details - Side Zip Closure - Plusdepois Chiffon (100% Silk) - Lined in Stretch Silk Georgette (91% Silk, 9% Elastane)",
     "image": "img/sp5.jpg",
-    "category": "woman",
+    "category": "springCollection25",
     "allSizes": ["36", "38", "40", "42", "44", "46", "48", "50"],
     "availableSizes": ["40", "42", "44"]
   },
