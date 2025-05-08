@@ -35,42 +35,43 @@
   }
 });
   
- // Component for rotating the rig with the left controller joystick
-    AFRAME.registerComponent('joystick-rotation', {
-      init: function () {
-        const rig = document.querySelector('#rig');
+  <script>
+      // Component for rotating the rig with the left controller joystick
+      AFRAME.registerComponent('joystick-rotation', {
+        init: function () {
+          const rig = document.querySelector('#rig');
+          this.el.addEventListener('axismove', (event) => {
+            const x = event.detail.axis[2];
+            if (Math.abs(x) > 0.1) {
+              rig.object3D.rotation.y -= x * 0.03;
+            }
+          });
+        }
+      });
+    
+      //!!DOES NOT WORK PROPERLY!!
+      // Component for moving the rig with the right controller joystick
+      AFRAME.registerComponent('joystick-movement', {
+        tick: function () {
+          const rig = document.querySelector('#rig');
+          const head = document.querySelector('#head');
+          const controller = document.querySelector('#rightHand');
 
-        this.el.addEventListener('axismove', (event) => {
-          const x = event.detail.axis[2];
-          if (Math.abs(x) > 0.1) {
-            rig.object3D.rotation.y -= x * 0.03;
-          }
-        });
-      }
-    });
+          if (!controller || !controller.components['oculus-touch-controls']) return;
 
-    // Component for moving the rig with the right controller joystick
-    AFRAME.registerComponent('joystick-movement', {
-      tick: function () {
-        const rig = document.querySelector('#rig');
-        const head = document.querySelector('#head');
-        const controller = document.querySelector('#rightHand');
+          const gamepad = controller.components['oculus-touch-controls'].controller;
+          if (gamepad && gamepad.axes.length >= 4) {
+            const y = gamepad.axes[3];
+            const x = gamepad.axes[2];
 
-        if (!controller || !controller.components['tracked-controls']) return;
-
-        const gamepad = controller.components['tracked-controls'].controller;
-        if (gamepad && gamepad.axes.length >= 4) {
-          const y = gamepad.axes[3];
-          const x = gamepad.axes[2];
-
-          if (Math.abs(x) > 0.1 || Math.abs(y) > 0.1) {
-            const dir = new THREE.Vector3(x * 0.1, 0, -y * 0.1);
-            dir.applyQuaternion(head.object3D.quaternion);
-            rig.object3D.position.add(dir);
+            if (Math.abs(x) > 0.1 || Math.abs(y) > 0.1) {
+              const dir = new THREE.Vector3(x * 0.1, 0, -y * 0.1);
+              dir.applyQuaternion(head.object3D.quaternion);
+              rig.object3D.position.add(dir);
+            }
           }
         }
-      }
-    });
+      });
     
     // Fade out the loading screen after the scene is fully loaded
     window.addEventListener('load', () => {
@@ -157,15 +158,13 @@
         
         <!-- Right Controller (Move) -->
         <a-entity id="rightHand"
-                hand-controls="hand: right"
-                laser-controls="hand: right"
-                tracked-controls="hand: right"></a-entity>
+                oculus-touch-controls ="hand: right"
+                tracked-controls ="hand: right"
+                joystick-movement></a-entity>
 
         <!-- Left Controller (Rotate) -->
         <a-entity id="leftHand"
-                hand-controls="hand: left"
-                laser-controls="hand: left"
-                tracked-controls="hand: left"
+                 oculus-touch-controls="hand: right"
                 joystick-rotation></a-entity>
       </a-entity>
 
