@@ -45,7 +45,7 @@ To host .glb (GLTF binary) files and embed them in your VR scenes:
 2. Choose (or create) a bucket.
 
 3.  Set the File’s Metadata :
-   - Scroll to Metadata;
+   - Properties > Scroll to Metadata;
    - Add a Metadata:
        Type --> System-Defined
        Key --> Content-Type
