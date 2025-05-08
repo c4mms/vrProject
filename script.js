@@ -115,15 +115,17 @@ let products = {
     "allSizes": ["36", "38", "40", "42", "44", "46"],
     "availableSizes": ["38", "40"]
   },
-  "16": {
-    "id": 16,
-    "name": "ANN DEMEULEMEESTER - MARK HIGH COMFORT SHIRT",
-    "price": "450 €",
-    "description": "Mark High Comfort Shirt - Black - Classic Collar - Button Closure - Twisted Front Chest Pocket - Long Sleeves - Buttoned Cuffs - 100% Cotton - Made in Italy",
-    "image": "img/sp2.jpg",
-    "category": "man",
+  "11":{
+    "id": 11,
+    "name": "ANN DEMEULEMEESTER - ERBE TRUCKET JACKET",
+    "price": "2250 €",
+    "description": "Erbe Trucket Jacket - Black - Grained Leather - Collar - Removable Signature Grosgrain Ribbon - Button Closure - Button Flap Chest Pockets - Side Pockets - Buttoned Cuffs - Fitted - 100% Sheep Leather - Made in Italy",
+    "image": "img/m3.jpg",
+    "category": "springCollection25",
     "allSizes": ["44", "46", "48", "50", "52", "54", "56"],
-    "availableSizes": ["50"]
+    "availableSizes": ["46", "48", "50", "52"],
+    "vr": true,
+    "glbPath": "https://showroomcd.s3.amazonaws.com/vestitiglb/tshirt.glb"
   },
   "12": {
     "id": 12,
@@ -166,20 +168,18 @@ let products = {
     "category": "man",
     "allSizes": ["44", "46", "48", "50", "52", "54", "56"],
     "availableSizes": ["44", "46", "48", "50", "52", "54"]
-  }
-  "11":{
-    "id": 11,
-    "name": "ANN DEMEULEMEESTER - ERBE TRUCKET JACKET",
-    "price": "2250 €",
-    "description": "Erbe Trucket Jacket - Black - Grained Leather - Collar - Removable Signature Grosgrain Ribbon - Button Closure - Button Flap Chest Pockets - Side Pockets - Buttoned Cuffs - Fitted - 100% Sheep Leather - Made in Italy",
-    "image": "img/m3.jpg",
-    "category": "springCollection25",
-    "allSizes": ["44", "46", "48", "50", "52", "54", "56"],
-    "availableSizes": ["46", "48", "50", "52"],
-    "vr": true,
-    "glbPath": "https://showroomcd.s3.amazonaws.com/vestitiglb/tshirt.glb"
   },
-"17": {
+  "16": {
+    "id": 16,
+    "name": "ANN DEMEULEMEESTER - MARK HIGH COMFORT SHIRT",
+    "price": "450 €",
+    "description": "Mark High Comfort Shirt - Black - Classic Collar - Button Closure - Twisted Front Chest Pocket - Long Sleeves - Buttoned Cuffs - 100% Cotton - Made in Italy",
+    "image": "img/sp2.jpg",
+    "category": "man",
+    "allSizes": ["44", "46", "48", "50", "52", "54", "56"],
+    "availableSizes": ["50"]
+  },
+  "17": {
     "id": 17,
     "name": "ACNE STUDIOS - DOWN JACKET",
     "price": "790 €",
@@ -190,7 +190,7 @@ let products = {
     "availableSizes": ["42", "44", "46", "48", "50"],
     "vr": true,
     "glbPath": "https://showroomcd.s3.amazonaws.com/vestitiglb/pufferjacket.glb"
-  },
+  }
 }
 
 renderProducts();// This renders the collections (woman, man, etc.)
