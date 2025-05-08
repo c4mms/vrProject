@@ -96,7 +96,7 @@ let products = {
   },
   "9":{
     "id": 9,
-    "name": "LONG DRESS IN PLUSDEPOIS PRINTED CHIFFON",
+    "name": "VALENTINO - LONG DRESS IN PLUSDEPOIS PRINTED CHIFFON",
     "price": "16000 €",
     "description": "Long Chiffon Dress - Plusdepois Print - Hand-Draped Bodice - Ruffled Skirt Details - Side Zip Closure - Plusdepois Chiffon (100% Silk) - Lined in Stretch Silk Georgette (91% Silk, 9% Elastane)",
     "image": "img/sp5.jpg",
@@ -107,63 +107,63 @@ let products = {
   },
   "10": {
     "id": 10,
-    "name": "Blossom Gown",
-    "price": "$390",
-    "description": "A delicate gown inspired by the first blooms of spring.",
+    "name": "ANN DEMEULEMEESTER - SIRKA DECONSTRUCTED ASYMMETRIC SKIRT",
+    "price": "1290 €",
+    "description": "Sirka Deconstructed Asymmetric Skirt - Black - Ramage Jacquard - Front Ruffled Signature Self-Tie Wrap - Signature Self-Tie Grosgrain Belt - Asymmetric Hem - Back Draped Trail - Floor Length - 79% Viscose 21% Silk - Made in Italy",
     "image": "img/sp1.jpg",
-    "category": "springCollection25",
-    "allSizes": ["XS", "S", "M", "L"],
-    "availableSizes": ["S", "M", "L"]
+    "category": "woman",
+    "allSizes": ["36", "38", "40", "42", "44", "46"],
+    "availableSizes": ["38", "40"]
   },
   "11": {
     "id": 11,
-    "name": "Sunrise Midi Dress",
-    "price": "$420",
-    "description": "Elegant midi dress with flowing lines and soft colors.",
+    "name": "ANN DEMEULEMEESTER - MARK HIGH COMFORT SHIRT",
+    "price": "450 €",
+    "description": "Mark High Comfort Shirt - Black - Classic Collar - Button Closure - Twisted Front Chest Pocket - Long Sleeves - Buttoned Cuffs - 100% Cotton - Made in Italy",
     "image": "img/sp2.jpg",
     "category": "springCollection25",
-    "allSizes": ["XS", "S", "M", "L", "XL"],
-    "availableSizes": ["M", "L"]
+    "allSizes": ["44", "46", "48", "50", "52", "54", "56"],
+    "availableSizes": ["50"]
   },
   "12": {
     "id": 12,
-    "name": "Rose Petal Slip",
-    "price": "$370",
-    "description": "A soft slip dress with rose petal detailing, ideal for garden parties.",
+    "name": "BALENCIAGA - LARGE RODEO BAG IN BLACK GRAINED CALFSKIN",
+    "price": "4450 €",
+    "description": "Large Rodeo Bag - Black Grained Calfskin - Top Handle (Drop: 22.8 cm) - Removable Shoulder Strap (Drop: 56.8 cm) - Removable Leather Key Holder with Two Open Rings - Antique Silver-Tone Hardware - Turn-Lock Closure - Large Front Pocket - Main Compartment - Interior Zip Pocket - Two Flat Back Pockets - Side Snap Buttons - Four Brass Feet - Lambskin Nappa Lining - Made in Italy",
     "image": "img/sp3.jpg",
     "category": "springCollection25",
-    "allSizes": ["XS", "S", "M", "L"],
-    "availableSizes": ["XS", "S", "M"]
+    "allSizes": ["OS"],
+    "availableSizes": ["OS"]
   },
   "13": {
     "id": 13,
-    "name": "Golden Hour Dress",
-    "price": "$360",
-    "description": "Flowy evening dress capturing the magic of golden hour.",
+    "name": "MEDIUM LE CITY BAG IN BORDEAUX",
+    "price": "2390 €",
+    "description": "Medium Le City Bag - Bordeaux Arena Lambskin - Two Hand-Braided Leather Handles - Adjustable and Removable Shoulder Strap (Drop: 52.8 cm) - Brass Hardware - Zip Closure with Knotted Leather Pull - Front Zip Pocket with Knotted Leather Pull - Interior Zip Pocket - Cotton Canvas Lining - Made in Italy",
     "image": "img/sp4.jpg",
     "category": "springCollection25",
-    "allSizes": ["S", "M", "L", "XL"],
-    "availableSizes": ["S", "M"]
+    "allSizes": ["OS"],
+    "availableSizes": ["OS"]
   },
   "14": {
     "id": 14,
-    "name": "Pastel Dream Dress",
-    "price": "$340",
-    "description": "Light pastel dress, perfect for sunny spring days.",
+    "name": "VALENTINO - LONG DRESS IN PLUSDEPOIS PRINTED CHIFFON",
+    "price": "16000 €",
+    "description": "Long Chiffon Dress - Plusdepois Print - Hand-Draped Bodice - Ruffled Skirt Details - Side Zip Closure - Plusdepois Chiffon (100% Silk) - Lined in Stretch Silk Georgette (91% Silk, 9% Elastane)",
     "image": "img/sp5.jpg",
-    "category": "springCollection25",
-    "allSizes": ["XS", "S", "M", "L", "XL"],
-    "availableSizes": ["S", "L"]
+    "category": "woman",
+    "allSizes": ["36", "38", "40", "42", "44", "46", "48", "50"],
+    "availableSizes": ["40", "42", "44"]
   },
   "15": {
     "id": 15,
-    "name": "Velvet Garden Dress",
-    "price": "$660",
-    "description": "Luxurious velvet dress adorned with floral embroidery.",
+    "name": "TUXEDO JACKET IN WOOL",
+    "price": "3200 €",
+    "description": "Tuxedo Jacket - Wool - Regular Fit - Fully Lined - Shawl Lapel - Single-Button Closure - Two Front Flap Pockets - One Chest Pocket (Wearer's Left Side) - 100% Virgin Wool - Lining: 75% Acetate, 25% Silk - Made in Italy",
     "image": "img/sp6.jpg",
     "category": "springCollection25",
-    "allSizes": ["XS", "S", "M"],
-    "availableSizes": ["S", "M"]
+    "allSizes": ["44", "46", "48", "50", "52", "54", "56"],
+    "availableSizes": ["44", "46", "48", "50", "52", "54"]
   }
 }
 
