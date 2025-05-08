@@ -195,6 +195,18 @@ let products = {
     "allSizes": ["44", "46", "48", "50", "52", "54", "56"],
     "availableSizes": ["44", "46", "48", "50", "52", "54"],
     "vr": false
+  },
+  },
+  "18": {
+    "id": 18,
+    "name": "ANN DEMEULEMEESTER - MARK HIGH COMFORT SHIRT",
+    "price": "450 €",
+    "description": "Mark High Comfort Shirt - Black - Classic Collar - Button Closure - Twisted Front Chest Pocket - Long Sleeves - Buttoned Cuffs - 100% Cotton - Made in Italy",
+    "image": "img/sp2.jpg",
+    "category": "springCollection25",
+    "allSizes": ["44", "46", "48", "50", "52", "54", "56"],
+    "availableSizes": ["50"],
+    "vr": false
   }
 }
 
