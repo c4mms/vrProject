@@ -136,7 +136,7 @@ let products = {
     "image": "img/sp3.jpg",
     "category": "springCollection25",
     "allSizes": ["OS"],
-    "availableSizes": ["OS"]
+    "availableSizes": ["OS"],
     "vr": false
   },
   "13": {
@@ -147,7 +147,7 @@ let products = {
     "image": "img/sp4.jpg",
     "category": "springCollection25",
     "allSizes": ["OS"],
-    "availableSizes": ["OS"]
+    "availableSizes": ["OS"],
     "vr": false
   },
   "14": {
@@ -170,7 +170,7 @@ let products = {
     "image": "img/sp6.jpg",
     "category": "man",
     "allSizes": ["44", "46", "48", "50", "52", "54", "56"],
-    "availableSizes": ["44", "46", "48", "50", "52", "54"]
+    "availableSizes": ["44", "46", "48", "50", "52", "54"],
     "vr": false
   },
   "16": {
@@ -181,7 +181,7 @@ let products = {
     "image": "img/sp2.jpg",
     "category": "man",
     "allSizes": ["44", "46", "48", "50", "52", "54", "56"],
-    "availableSizes": ["50"]
+    "availableSizes": ["50"],
     "vr": false
   },
   "17": {
