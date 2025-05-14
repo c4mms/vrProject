@@ -1,229 +1,40 @@
-let products = {
-  "1": {
-    "id": 1,
-    "name": "ACNE STUDIOS - DOWN JACKET",
-    "price": "790 €",
-    "description": "Garment-Dyed Nylon – Logo Embroidery on Chest – Centre-Front Zipper & Snap Button Closure – Front & Internal Pockets – Fitted Fit – Below Waist Length – Model is 188 cm / 6'2 and Wears Size 46 – Shell: 100% Nylon – Lining: 100% Recycled Nylon – Filling: 90% Recycled Down, 10% Recycled Feathers – Made in Italy",
-    "image": "img/m1.jpg",
-    "category": "man",
-    "allSizes": ["42", "44", "46", "48", "50", "52", "54"],
-    "availableSizes": ["42", "44", "46", "48", "50"],
-    "vr": true,
-    "glbPath": "https://showroomcd.s3.amazonaws.com/vestitiglb/pufferjacket.glb"
-  },
-  "2":{
-    "id": 2,
-    "name": "GIORGIO ARMANI - SOHO WOOL SUIT",
-    "price": "2200 €",
-    "description": "Virgin Wool – Slim Fit – Single-Breasted Two-Button Jacket – Peak Lapels – Chest Welt Pocket – Two Front Welt Pockets – Double Back Vents – Jacket Length: 73.5 cm – Flat Front Trousers – Belt Loops – Covered Zip & Button Closure – Side Welt Pockets – Rear Welt Pockets with Button – Trouser Hem Width: 19 cm – Jacket: 100% Virgin Wool – Jacket Lining: 100% Cupro – Trousers: 100% Virgin Wool – Trouser Knee Lining: 60% Acetate, 40% Cupro – Made in Italy",
-    "image": "img/m2.jpg",
-    "category": "man",
-    "allSizes": ["42", "44", "46", "48", "50", "52", "54", "56", "58", "60"],
-    "availableSizes": ["42", "44", "46", "52"],
-    "vr": true,
-    "glbPath": "https://showroomcd.s3.amazonaws.com/vestitiglb/suit2.glb"
-  },
-  "3":{
-    "id": 3,
-    "name": "ANN DEMEULEMEESTER - ERBE TRUCKET JACKET",
-    "price": "2250 €",
-    "description": "Erbe Trucket Jacket - Black - Grained Leather - Collar - Removable Signature Grosgrain Ribbon - Button Closure - Button Flap Chest Pockets - Side Pockets - Buttoned Cuffs - Fitted - 100% Sheep Leather - Made in Italy",
-    "image": "img/m3.jpg",
-    "category": "man",
-    "allSizes": ["44", "46", "48", "50", "52", "54", "56"],
-    "availableSizes": ["46", "48", "50", "52"],
-    "vr": true,
-    "glbPath": "https://showroomcd.s3.amazonaws.com/vestitiglb/tshirt.glb"
-  },
-  "4":{
-    "id": 4,
-    "name": "DIOR - ABANDON SHIRT DRESS",
-    "price": "3000 €",
-    "description": "Cotton-Silk Poplin – Asymmetric Neckline – One-Shoulder – Rounded Hem – Tonal Removable Belt with Metal Buckle – Hidden Front Button Closure – Buttoned Cuffs – Bee & CD Embroidery – Unlined – Asymmetric Fit – 57% Cotton, 43% Silk – Made in France ",
-    "image": "img/w1.jpg",
-    "category": "woman",
-    "allSizes": ["38", "40", "42", "44", "46", "48", "50"],
-    "availableSizes": ["40", "42", "46", "48"],
-    "vr": true,
-    "glbPath": "https://showroomcd.s3.amazonaws.com/vestitiglb/dior.glb"
-  },
-  "5":{
-    "id": 5,
-    "name": "BALENCIAGA - RIBBED KNIT TANK TOP",
-    "price": "850 €",
-    "description": "Ribbed Wool Blend – Crew Neck – Sleeveless – Ribbed Finish – Embroidered Balenciaga Logo on Back – Fitted Fit – 90% Wool, 8% Polyamide, 2% Elastane – Embroidery: 100% Polyester – Made in Italy ",
-    "image": "img/w2.jpg",
-    "category": "woman",
-    "allSizes": ["38", "40", "42", "44", "46"],
-    "availableSizes": ["40", "42", "44", "46"],
-    "vr": true,
-    "glbPath": "https://showroomcd.s3.amazonaws.com/vestitiglb/canottiera.glb"
-  },
-  "6":{
-    "id": 6,
-    "name": "GIVENCHY - DRAPPED SATIN GOWN",
-    "price": "4500 €",
-    "description": "Satin – Draped Design – Open Back – Asymmetric Crystal-Embroidered Straps – Invisible Side Zip – Front Slit – Flowing Long Skirt – Unlined – Fit: Slim with Fluid Skirt – Made in France",
-    "image": "img/w3.jpg",
-    "category": "woman",
-    "allSizes": ["38", "40", "42", "44", "46", "48"],
-    "availableSizes": ["38", "40", "44"],
-    "vr": true,
-    "glbPath": "https://showroomcd.s3.amazonaws.com/vestitiglb/minidress.glb"
-  },
-  "7":{
-    "id": 7,
-    "name": "MCQUEEN - NAVY LACE INSERT DRESS",
-    "price": "1590 €",
-    "description": "Wool Blend – Rear Hidden Zip & Hook Closure – Straps – Back Slit – Lace Inserts – Slim Fit – Outer: 75% Wool, 25% Mohair – Lining: 74% Acetate, 26% Silk – Made in Italy ",
-    "image": "img/w4.jpg",
-    "category": "woman",
-    "allSizes": ["36", "38", "40", "42", "44", "46"],
-    "availableSizes": ["36", "38", "40", "42", "44", "46"],
-    "vr": true,
-    "glbPath": "https://showroomcd.s3.amazonaws.com/vestitiglb/dress.glb"
-  },
-  "8":{
-    "id": 8,
-    "name": "ANN DEMEULEMEESTER - SIRKA DECONSTRUCTED ASYMMETRIC SKIRT",
-    "price": "1290 €",
-    "description": "Sirka Deconstructed Asymmetric Skirt - Black - Ramage Jacquard - Front Ruffled Signature Self-Tie Wrap - Signature Self-Tie Grosgrain Belt - Asymmetric Hem - Back Draped Trail - Floor Length - 79% Viscose 21% Silk - Made in Italy",
-    "image": "img/sp1.jpg",
-    "category": "woman",
-    "allSizes": ["36", "38", "40", "42", "44", "46"],
-    "availableSizes": ["38", "40"],
-    "vr": false
-  },
-  "9":{
-    "id": 9,
-    "name": "VALENTINO - LONG DRESS IN PLUSDEPOIS PRINTED CHIFFON",
-    "price": "16000 €",
-    "description": "Long Chiffon Dress - Plusdepois Print - Hand-Draped Bodice - Ruffled Skirt Details - Side Zip Closure - Plusdepois Chiffon (100% Silk) - Lined in Stretch Silk Georgette (91% Silk, 9% Elastane)",
-    "image": "img/sp5.jpg",
-    "category": "woman",
-    "allSizes": ["36", "38", "40", "42", "44", "46", "48", "50"],
-    "availableSizes": ["40", "42", "44"],
-    "vr": false
-  },
-  "10": {
-    "id": 10,
-    "name": "ANN DEMEULEMEESTER - SIRKA DECONSTRUCTED ASYMMETRIC SKIRT",
-    "price": "1290 €",
-    "description": "Sirka Deconstructed Asymmetric Skirt - Black - Ramage Jacquard - Front Ruffled Signature Self-Tie Wrap - Signature Self-Tie Grosgrain Belt - Asymmetric Hem - Back Draped Trail - Floor Length - 79% Viscose 21% Silk - Made in Italy",
-    "image": "img/sp1.jpg",
-    "category": "springCollection25",
-    "allSizes": ["36", "38", "40", "42", "44", "46"],
-    "availableSizes": ["38", "40"],
-    "vr": false
-  },
-  "11":{
-    "id": 11,
-    "name": "ANN DEMEULEMEESTER - ERBE TRUCKET JACKET",
-    "price": "2250 €",
-    "description": "Erbe Trucket Jacket - Black - Grained Leather - Collar - Removable Signature Grosgrain Ribbon - Button Closure - Button Flap Chest Pockets - Side Pockets - Buttoned Cuffs - Fitted - 100% Sheep Leather - Made in Italy",
-    "image": "img/m3.jpg",
-    "category": "springCollection25",
-    "allSizes": ["44", "46", "48", "50", "52", "54", "56"],
-    "availableSizes": ["46", "48", "50", "52"],
-    "vr": true,
-    "glbPath": "https://showroomcd.s3.amazonaws.com/vestitiglb/tshirt.glb"
-  },
-  "12": {
-    "id": 12,
-    "name": "BALENCIAGA - LARGE RODEO BAG IN BLACK GRAINED CALFSKIN",
-    "price": "4450 €",
-    "description": "Large Rodeo Bag - Black Grained Calfskin - Top Handle (Drop: 22.8 cm) - Removable Shoulder Strap (Drop: 56.8 cm) - Removable Leather Key Holder with Two Open Rings - Antique Silver-Tone Hardware - Turn-Lock Closure - Large Front Pocket - Main Compartment - Interior Zip Pocket - Two Flat Back Pockets - Side Snap Buttons - Four Brass Feet - Lambskin Nappa Lining - Made in Italy",
-    "image": "img/sp3.jpg",
-    "category": "springCollection25",
-    "allSizes": ["OS"],
-    "availableSizes": ["OS"],
-    "vr": false
-  },
-  "13": {
-    "id": 13,
-    "name": "BALENCIAGA - MEDIUM LE CITY BAG IN BORDEAUX",
-    "price": "2390 €",
-    "description": "Medium Le City Bag - Bordeaux Arena Lambskin - Two Hand-Braided Leather Handles - Adjustable and Removable Shoulder Strap (Drop: 52.8 cm) - Brass Hardware - Zip Closure with Knotted Leather Pull - Front Zip Pocket with Knotted Leather Pull - Interior Zip Pocket - Cotton Canvas Lining - Made in Italy",
-    "image": "img/sp4.jpg",
-    "category": "springCollection25",
-    "allSizes": ["OS"],
-    "availableSizes": ["OS"],
-    "vr": false
-  },
-  "14": {
-    "id": 14,
-    "name": "GIVENCHY - DRAPPED SATIN GOWN",
-    "price": "4500 €",
-    "description": "Satin – Draped Design – Open Back – Asymmetric Crystal-Embroidered Straps – Invisible Side Zip – Front Slit – Flowing Long Skirt – Unlined – Fit: Slim with Fluid Skirt – Made in France",
-    "image": "img/w3.jpg",
-    "category": "springCollection25",
-    "allSizes": ["38", "40", "42", "44", "46", "48"],
-    "availableSizes": ["38", "40", "44"],
-    "vr": true,
-    "glbPath": "https://showroomcd.s3.amazonaws.com/vestitiglb/minidress.glb"
-  },
-  "15": {
-    "id": 15,
-    "name": "ACNE STUDIOS - DOWN JACKET",
-    "price": "790 €",
-    "description": "Garment-Dyed Nylon – Logo Embroidery on Chest – Centre-Front Zipper & Snap Button Closure – Front & Internal Pockets – Fitted Fit – Below Waist Length – Model is 188 cm / 6'2 and Wears Size 46 – Shell: 100% Nylon – Lining: 100% Recycled Nylon – Filling: 90% Recycled Down, 10% Recycled Feathers – Made in Italy",
-    "image": "img/m1.jpg",
-    "category": "springCollection25",
-    "allSizes": ["42", "44", "46", "48", "50", "52", "54"],
-    "availableSizes": ["42", "44", "46", "48", "50"],
-    "vr": true,
-    "glbPath": "https://showroomcd.s3.amazonaws.com/vestitiglb/pufferjacket.glb"
-  },
-  "16": {
-    "id": 16,
-    "name": "ANN DEMEULEMEESTER - MARK HIGH COMFORT SHIRT",
-    "price": "450 €",
-    "description": "Mark High Comfort Shirt - Black - Classic Collar - Button Closure - Twisted Front Chest Pocket - Long Sleeves - Buttoned Cuffs - 100% Cotton - Made in Italy",
-    "image": "img/sp2.jpg",
-    "category": "man",
-    "allSizes": ["44", "46", "48", "50", "52", "54", "56"],
-    "availableSizes": ["50"],
-    "vr": false
-  },
-  "17": {
-    "id": 17,
-    "name": "VALENTINO - TUXEDO JACKET IN WOOL",
-    "price": "3200 €",
-    "description": "Tuxedo Jacket - Wool - Regular Fit - Fully Lined - Shawl Lapel - Single-Button Closure - Two Front Flap Pockets - One Chest Pocket (Wearer's Left Side) - 100% Virgin Wool - Lining: 75% Acetate, 25% Silk - Made in Italy",
-    "image": "img/sp6.jpg",
-    "category": "man",
-    "allSizes": ["44", "46", "48", "50", "52", "54", "56"],
-    "availableSizes": ["44", "46", "48", "50", "52", "54"],
-    "vr": false
-  },
-  "18": {
-    "id": 18,
-    "name": "ANN DEMEULEMEESTER - MARK HIGH COMFORT SHIRT",
-    "price": "450 €",
-    "description": "Mark High Comfort Shirt - Black - Classic Collar - Button Closure - Twisted Front Chest Pocket - Long Sleeves - Buttoned Cuffs - 100% Cotton - Made in Italy",
-    "image": "img/sp2.jpg",
-    "category": "springCollection25",
-    "allSizes": ["44", "46", "48", "50", "52", "54", "56"],
-    "availableSizes": ["50"],
-    "vr": false
-  }
-}
+// Global object to store all loaded products
+let products = {};
 
-renderProducts();// This renders the collections (woman, man, etc.)
-try{    
-//if we are on a single product page
+// Asynchronous function that initializes the page by loading product data
+async function init() {
+  try {
+    // Fetch product data from JSON file
+    const response = await fetch('products.json');
+    if (!response.ok) throw new Error('Errore nel caricamento di products.json');
+    
+    // Parse JSON and assign it to the global products object
+    products = await response.json();
+   
+    // Render products for category pages
+    renderProducts();
+
+     // If we are on a product detail page, render the product info
     if (document.querySelector('.product-detail')) {
       renderProductDetail();
     }
-  } catch (error) {
-    console.error('Error loading products:', error);
-  }
 
-// Render category pages
+  } catch (error) {
+    console.error('Errore nel caricamento dei prodotti:', error);
+  }
+}
+
+// Start the app
+init();
+
+// Render product cards for each category on the corresponding pages
 function renderProducts() {
   const path = window.location.pathname;
+  
+  // Show only 6 products if we are on the homepage
   const showAll = !(path === "/" || path.endsWith("index.html"));
 
+  // Check which sections exist on the page and render products for each
   if (document.getElementById("spring-products")) {
     renderCategoryProducts("springCollection25", "spring-products", showAll);
   }
@@ -241,6 +52,7 @@ function renderProducts() {
   }
 }
 
+// Render product cards for a given category
 function renderCategoryProducts(category, containerId, showAll = true) {
   const container = document.getElementById(containerId);
 
@@ -252,15 +64,16 @@ function renderCategoryProducts(category, containerId, showAll = true) {
 
   let count = 0;
   for (const [id, product] of Object.entries(products)) {
+    // Limit to 6 products unless showAll is true
     if (product.category === category) {
             if (!showAll && count >= 6) break; // Show only 6 unless showAll is true
       count++;
-
+      // Create card for each product
       const card = document.createElement("div");
       card.className = "product-card";
 
 
-      // HTML for the card 
+      // Set inner HTML for the card
       card.innerHTML = `
         <a href="product.html?id=${id}" class="product-link">
           <div class="product-image" style="background-image: url('${product.image}')"></div>
@@ -302,16 +115,17 @@ function toggleHeart(button) {
 function renderProductDetail() {
   const params = new URLSearchParams(window.location.search);
   const productId = params.get("id");
-
+  // Exit if product ID is invalid or not found
   if (!productId || !products[productId]) return;
 
   const product = products[productId];
-
+  // Get DOM elements
   const nameEl = document.getElementById("product-name");
   const priceEl = document.getElementById("product-price");
   const descEl = document.getElementById("product-description");
   const imgEl = document.getElementById("product-image");
 
+  // Fill product information
   if (nameEl) nameEl.textContent = product.name;
   if (priceEl) priceEl.textContent = product.price;
   if (descEl) descEl.textContent = product.description;
@@ -323,7 +137,8 @@ function renderProductDetail() {
   const sizeButtonsContainer = document.querySelector(".size-buttons");
   const addToCartBtn = document.querySelector(".add-to-cart-btn");
   let selectedSize = null;
-
+  
+  // Handle size selection
   if (sizeButtonsContainer) {
     if (product.allSizes && product.availableSizes) {
       sizeButtonsContainer.innerHTML = '';
@@ -337,7 +152,7 @@ function renderProductDetail() {
         if (!product.availableSizes.includes(size)) {
           button.disabled = true;
         }
-
+        // When a size is selected
         button.addEventListener('click', () => {
           document.querySelectorAll('.size-btn').forEach(btn => btn.classList.remove('selected'));
           button.classList.add('selected');
@@ -352,6 +167,7 @@ function renderProductDetail() {
       if (addToCartBtn) addToCartBtn.disabled = true;
       sizeButtonsContainer.style.display = 'flex';
     } else {
+      // If no sizes are needed
       sizeButtonsContainer.style.display = 'none';
       if (addToCartBtn) addToCartBtn.disabled = false;
     }
@@ -391,7 +207,8 @@ function renderProductDetail() {
       sameCollectionContainer.appendChild(card);
     });
   }
-  // Handle VR button
+ 
+// Handle VR button on product detail page
 const vrButton = document.getElementById("vr-button");
 if (vrButton && product.glbPath) {
   vrButton.onclick = () => {
@@ -399,7 +216,7 @@ if (vrButton && product.glbPath) {
   };
 }
 else {
-    // No VR support 
+    // VR not supported: disable or alert
     vrButton.disabled = false; // keep it clickable
     vrButton.classList.add("disabled");
     vrButton.onclick = () => {
