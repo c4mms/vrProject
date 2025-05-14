@@ -1,4 +1,4 @@
-[
+{
   "1": {
     "id": 1,
     "name": "ACNE STUDIOS - DOWN JACKET",
@@ -8,7 +8,8 @@
     "category": "man",
     "allSizes": ["42", "44", "46", "48", "50", "52", "54"],
     "availableSizes": ["42", "44", "46", "48", "50"],
-    "vr": true
+    "vr": true,
+    "glbPath": "https://showroomcd.s3.amazonaws.com/vestitiglb/pufferjacket.glb"
   },
   "2":{
     "id": 2,
@@ -19,7 +20,8 @@
     "category": "man",
     "allSizes": ["42", "44", "46", "48", "50", "52", "54", "56", "58", "60"],
     "availableSizes": ["42", "44", "46", "52"],
-    "vr": true
+    "vr": true,
+    "glbPath": "https://showroomcd.s3.amazonaws.com/vestitiglb/suit2.glb"
   },
   "3":{
     "id": 3,
@@ -30,7 +32,8 @@
     "category": "man",
     "allSizes": ["44", "46", "48", "50", "52", "54", "56"],
     "availableSizes": ["46", "48", "50", "52"],
-    "vr": true
+    "vr": true,
+    "glbPath": "https://showroomcd.s3.amazonaws.com/vestitiglb/tshirt.glb"
   },
   "4":{
     "id": 4,
@@ -41,7 +44,8 @@
     "category": "woman",
     "allSizes": ["38", "40", "42", "44", "46", "48", "50"],
     "availableSizes": ["40", "42", "46", "48"],
-    "vr": true
+    "vr": true,
+    "glbPath": "https://showroomcd.s3.amazonaws.com/vestitiglb/dior.glb"
   },
   "5":{
     "id": 5,
@@ -52,7 +56,8 @@
     "category": "woman",
     "allSizes": ["38", "40", "42", "44", "46"],
     "availableSizes": ["40", "42", "44", "46"],
-    "vr": true
+    "vr": true,
+    "glbPath": "https://showroomcd.s3.amazonaws.com/vestitiglb/canottiera.glb"
   },
   "6":{
     "id": 6,
@@ -63,7 +68,8 @@
     "category": "woman",
     "allSizes": ["38", "40", "42", "44", "46", "48"],
     "availableSizes": ["38", "40", "44"],
-    "vr": true
+    "vr": true,
+    "glbPath": "https://showroomcd.s3.amazonaws.com/vestitiglb/minidress.glb"
   },
   "7":{
     "id": 7,
@@ -74,40 +80,131 @@
     "category": "woman",
     "allSizes": ["36", "38", "40", "42", "44", "46"],
     "availableSizes": ["36", "38", "40", "42", "44", "46"],
-    "vr": true
+    "vr": true,
+    "glbPath": "https://showroomcd.s3.amazonaws.com/vestitiglb/dress.glb"
   },
   "8":{
     "id": 8,
-    "name": "Elegant Dress",
-    "price": "$350",
-    "description": "Refined silhouette with modern elegance for 2025.",
-    "image": "img/w2.jpg",
+    "name": "ANN DEMEULEMEESTER - SIRKA DECONSTRUCTED ASYMMETRIC SKIRT",
+    "price": "1290 €",
+    "description": "Sirka Deconstructed Asymmetric Skirt - Black - Ramage Jacquard - Front Ruffled Signature Self-Tie Wrap - Signature Self-Tie Grosgrain Belt - Asymmetric Hem - Back Draped Trail - Floor Length - 79% Viscose 21% Silk - Made in Italy",
+    "image": "img/sp1.jpg",
     "category": "woman",
-    "allSizes": ["XS", "S", "M", "L", "XL"],
-    "availableSizes": ["S", "M", "L"],
-    "vr": true
+    "allSizes": ["36", "38", "40", "42", "44", "46"],
+    "availableSizes": ["38", "40"],
+    "vr": false
   },
   "9":{
     "id": 9,
-    "name": "Elegant Dress",
-    "price": "$350",
-    "description": "Refined silhouette with modern elegance for 2025.",
-    "image": "img/w2.jpg",
+    "name": "VALENTINO - LONG DRESS IN PLUSDEPOIS PRINTED CHIFFON",
+    "price": "16000 €",
+    "description": "Long Chiffon Dress - Plusdepois Print - Hand-Draped Bodice - Ruffled Skirt Details - Side Zip Closure - Plusdepois Chiffon (100% Silk) - Lined in Stretch Silk Georgette (91% Silk, 9% Elastane)",
+    "image": "img/sp5.jpg",
     "category": "woman",
-    "allSizes": ["XS", "S", "M", "L", "XL"],
-    "availableSizes": ["S", "M", "L"],
-    "vr": true
+    "allSizes": ["36", "38", "40", "42", "44", "46", "48", "50"],
+    "availableSizes": ["40", "42", "44"],
+    "vr": false
   },
-  "10":{
+  "10": {
     "id": 10,
-    "name": "Elegant Dress",
-    "price": "$350",
-    "description": "An elegant dress perfect for evening occasions.",
+    "name": "ANN DEMEULEMEESTER - SIRKA DECONSTRUCTED ASYMMETRIC SKIRT",
+    "price": "1290 €",
+    "description": "Sirka Deconstructed Asymmetric Skirt - Black - Ramage Jacquard - Front Ruffled Signature Self-Tie Wrap - Signature Self-Tie Grosgrain Belt - Asymmetric Hem - Back Draped Trail - Floor Length - 79% Viscose 21% Silk - Made in Italy",
     "image": "img/sp1.jpg",
     "category": "springCollection25",
-    "allSizes": ["XS", "S", "M", "L", "XL"],
-    "availableSizes": ["S", "M", "L"],
+    "allSizes": ["36", "38", "40", "42", "44", "46"],
+    "availableSizes": ["38", "40"],
+    "vr": false
+  },
+  "11":{
+    "id": 11,
+    "name": "ANN DEMEULEMEESTER - ERBE TRUCKET JACKET",
+    "price": "2250 €",
+    "description": "Erbe Trucket Jacket - Black - Grained Leather - Collar - Removable Signature Grosgrain Ribbon - Button Closure - Button Flap Chest Pockets - Side Pockets - Buttoned Cuffs - Fitted - 100% Sheep Leather - Made in Italy",
+    "image": "img/m3.jpg",
+    "category": "springCollection25",
+    "allSizes": ["44", "46", "48", "50", "52", "54", "56"],
+    "availableSizes": ["46", "48", "50", "52"],
+    "vr": true,
+    "glbPath": "https://showroomcd.s3.amazonaws.com/vestitiglb/tshirt.glb"
+  },
+  "12": {
+    "id": 12,
+    "name": "BALENCIAGA - LARGE RODEO BAG IN BLACK GRAINED CALFSKIN",
+    "price": "4450 €",
+    "description": "Large Rodeo Bag - Black Grained Calfskin - Top Handle (Drop: 22.8 cm) - Removable Shoulder Strap (Drop: 56.8 cm) - Removable Leather Key Holder with Two Open Rings - Antique Silver-Tone Hardware - Turn-Lock Closure - Large Front Pocket - Main Compartment - Interior Zip Pocket - Two Flat Back Pockets - Side Snap Buttons - Four Brass Feet - Lambskin Nappa Lining - Made in Italy",
+    "image": "img/sp3.jpg",
+    "category": "springCollection25",
+    "allSizes": ["OS"],
+    "availableSizes": ["OS"],
+    "vr": false
+  },
+  "13": {
+    "id": 13,
+    "name": "BALENCIAGA - MEDIUM LE CITY BAG IN BORDEAUX",
+    "price": "2390 €",
+    "description": "Medium Le City Bag - Bordeaux Arena Lambskin - Two Hand-Braided Leather Handles - Adjustable and Removable Shoulder Strap (Drop: 52.8 cm) - Brass Hardware - Zip Closure with Knotted Leather Pull - Front Zip Pocket with Knotted Leather Pull - Interior Zip Pocket - Cotton Canvas Lining - Made in Italy",
+    "image": "img/sp4.jpg",
+    "category": "springCollection25",
+    "allSizes": ["OS"],
+    "availableSizes": ["OS"],
+    "vr": false
+  },
+  "14": {
+    "id": 14,
+    "name": "GIVENCHY - DRAPPED SATIN GOWN",
+    "price": "4500 €",
+    "description": "Satin – Draped Design – Open Back – Asymmetric Crystal-Embroidered Straps – Invisible Side Zip – Front Slit – Flowing Long Skirt – Unlined – Fit: Slim with Fluid Skirt – Made in France",
+    "image": "img/w3.jpg",
+    "category": "springCollection25",
+    "allSizes": ["38", "40", "42", "44", "46", "48"],
+    "availableSizes": ["38", "40", "44"],
+    "vr": true,
+    "glbPath": "https://showroomcd.s3.amazonaws.com/vestitiglb/minidress.glb"
+  },
+  "15": {
+    "id": 15,
+    "name": "ACNE STUDIOS - DOWN JACKET",
+    "price": "790 €",
+    "description": "Garment-Dyed Nylon – Logo Embroidery on Chest – Centre-Front Zipper & Snap Button Closure – Front & Internal Pockets – Fitted Fit – Below Waist Length – Model is 188 cm / 6'2 and Wears Size 46 – Shell: 100% Nylon – Lining: 100% Recycled Nylon – Filling: 90% Recycled Down, 10% Recycled Feathers – Made in Italy",
+    "image": "img/m1.jpg",
+    "category": "springCollection25",
+    "allSizes": ["42", "44", "46", "48", "50", "52", "54"],
+    "availableSizes": ["42", "44", "46", "48", "50"],
+    "vr": true,
+    "glbPath": "https://showroomcd.s3.amazonaws.com/vestitiglb/pufferjacket.glb"
+  },
+  "16": {
+    "id": 16,
+    "name": "ANN DEMEULEMEESTER - MARK HIGH COMFORT SHIRT",
+    "price": "450 €",
+    "description": "Mark High Comfort Shirt - Black - Classic Collar - Button Closure - Twisted Front Chest Pocket - Long Sleeves - Buttoned Cuffs - 100% Cotton - Made in Italy",
+    "image": "img/sp2.jpg",
+    "category": "man",
+    "allSizes": ["44", "46", "48", "50", "52", "54", "56"],
+    "availableSizes": ["50"],
+    "vr": false
+  },
+  "17": {
+    "id": 17,
+    "name": "VALENTINO - TUXEDO JACKET IN WOOL",
+    "price": "3200 €",
+    "description": "Tuxedo Jacket - Wool - Regular Fit - Fully Lined - Shawl Lapel - Single-Button Closure - Two Front Flap Pockets - One Chest Pocket (Wearer's Left Side) - 100% Virgin Wool - Lining: 75% Acetate, 25% Silk - Made in Italy",
+    "image": "img/sp6.jpg",
+    "category": "man",
+    "allSizes": ["44", "46", "48", "50", "52", "54", "56"],
+    "availableSizes": ["44", "46", "48", "50", "52", "54"],
+    "vr": false
+  },
+  "18": {
+    "id": 18,
+    "name": "ANN DEMEULEMEESTER - MARK HIGH COMFORT SHIRT",
+    "price": "450 €",
+    "description": "Mark High Comfort Shirt - Black - Classic Collar - Button Closure - Twisted Front Chest Pocket - Long Sleeves - Buttoned Cuffs - 100% Cotton - Made in Italy",
+    "image": "img/sp2.jpg",
+    "category": "springCollection25",
+    "allSizes": ["44", "46", "48", "50", "52", "54", "56"],
+    "availableSizes": ["50"],
     "vr": false
   }
-]
-
+}
