@@ -51,10 +51,10 @@ To display .glb files in your VR scenes using A-Frame, you need to host them cor
 
 ### Step 2: Upload the .glb model
 1. Open your newly created bucket
-2. Click “Upload” and select your .glb file
-3. Set the File’s Metadata :
-   - Properties > Scroll to Metadata;
-   - Add a Metadata:   Type --> System-Defined      Key --> Content-Type      Value --> model/gltf-binary
+2. Click **“Upload”** and select your .glb file
+3. Set the **File’s Metadata** :
+   - **Properties** > Scroll to **Metadata**;
+   - **Add a Metadata**:   Type --> **System-Defined**      Key --> **Content-Type**      Value --> **model/gltf-binary**
 4. Upload your .glb file (e.g., jacket.glb).
 
 
@@ -103,8 +103,8 @@ This project includes two versions of an **A-Frame-based** ([A-Frame Documentati
 Always opens the same pre-defined .glb model (in this case showroom.glb).
 
  **How it works:**
- - The model is referenced inside an **<a-assets> tag** using its direct **URL** from the bucket.
-   ```html
+ - The model is referenced inside an **`<a-assets>` tag** using its direct **URL** from the bucket.
+   ``` html
    <a-assets timeout="20000">
     <a-asset-item id="showroom-model" src="https://showroomcd.s3.amazonaws.com/showroom.glb"></a-asset-item>
    </a-assets>
@@ -122,22 +122,22 @@ Loads and displays a specific .glb file dynamically by passing its URL as a quer
 **How it works:**
 - Instead of writing the model **URL** directly into the HTML, it is passed through the page URL and handled via **JavaScript**.
   example:
-  ```URL
+  ``` URL
   https://c4mms.github.io/vrProject/vr/vr-clothesViewer.html model=https%3A%2F%2Fshowroomcd.s3.amazonaws.com%2Fvestitiglb%2Ftshirt.glb
    ```
   
 - The **URL** is extracted in **JavaScript** using:
-  ```javascript
+  ``` javascript
   const urlParams = new URLSearchParams(window.location.search);
   const modelUrl = urlParams.get('model');
    ```
 - If a valid **model URL** is provided, it is decoded and injected into the scene
-  ```javascript
+  ``` javascript
   const modelEntity = document.getElementById('model');
   modelEntity.setAttribute('gltf-model', decodedUrl);
   ```
 - Event listeners handle model success and error states:
-  ```javascript
+  ``` javascript
     modelEntity.addEventListener('model-error', (e) => {
     console.error("Model failed to load:", e.detail.src);
     alert("Failed to load the model...");
