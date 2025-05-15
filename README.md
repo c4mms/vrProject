@@ -123,7 +123,7 @@ Loads and displays a specific .glb file dynamically by passing its URL as a quer
 - Instead of writing the model **URL** directly into the HTML, it is passed through the page URL and handled via **JavaScript**.
   example:
   ``` URL
-  https://c4mms.github.io/vrProject/vr/vr-clothesViewer.html model=https%3A%2F%2Fshowroomcd.s3.amazonaws.com%2Fvestitiglb%2Ftshirt.glb
+  https://c4mms.github.io/vrProject/vr/vr-clothesViewer.html?model=https%3A%2F%2Fshowroomcd.s3.amazonaws.com%2Fvestitiglb%2Ftshirt.glb
    ```
   
 - The **URL** is extracted in **JavaScript** using:
