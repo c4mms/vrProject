@@ -97,12 +97,13 @@ To allow your website to access the file from another origin (especially importa
   > **Note:** This allows any domain to load your 3D models. For more security, replace "*" in "AllowedOrigins" with your actual domain.
 
 ## How to open the file saved in the bucket with A-Frame
-This project includes two versions of an **A-Frame-based**: a **static viewer** that always loads the same model (the showroom), and a **dynamic viewer** that loads a model based on a URL parameter (The single products).
+This project includes two versions of an **A-Frame-based** ([A-Frame Documentation](https://aframe.io/)): a **static viewer** that always loads the same model (the showroom), and a **dynamic viewer** that loads a model based on a URL parameter (The single products).
 
 ### Static Viewer (vr.html)
 Always opens the same pre-defined .glb model (in this case showroom.glb).
+
  **How it works:**
- - The model is referenced inside an <a-assets> tag using its direct URL from the bucket.
+ - The model is referenced inside an **<a-assets> tag** using its direct **URL** from the bucket.
    ```html
    <a-assets timeout="20000">
     <a-asset-item id="showroom-model" src="https://showroomcd.s3.amazonaws.com/showroom.glb"></a-asset-item>
@@ -117,19 +118,20 @@ Always opens the same pre-defined .glb model (in this case showroom.glb).
 
 ### Dynamic Viewer (vr-clothesViewer.html)
 Loads and displays a specific .glb file dynamically by passing its URL as a query parameter.
+
 **How it works:**
-- Instead of writing the model URL directly into the HTML, it is passed through the page URL and handled via JavaScript.
+- Instead of writing the model **URL** directly into the HTML, it is passed through the page URL and handled via **JavaScript**.
   example:
   ```URL
   https://c4mms.github.io/vrProject/vr/vr-clothesViewer.html model=https%3A%2F%2Fshowroomcd.s3.amazonaws.com%2Fvestitiglb%2Ftshirt.glb
    ```
   
-- The URL is extracted in JavaScript using:
+- The **URL** is extracted in **JavaScript** using:
   ```javascript
   const urlParams = new URLSearchParams(window.location.search);
   const modelUrl = urlParams.get('model');
    ```
-- If a valid model URL is provided, it is decoded and injected into the scene
+- If a valid **model URL** is provided, it is decoded and injected into the scene
   ```javascript
   const modelEntity = document.getElementById('model');
   modelEntity.setAttribute('gltf-model', decodedUrl);
