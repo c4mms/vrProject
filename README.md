@@ -136,18 +136,6 @@ Loads and displays a specific .glb file dynamically by passing its URL as a quer
   const modelEntity = document.getElementById('model');
   modelEntity.setAttribute('gltf-model', decodedUrl);
   ```
-- Event listeners handle model success and error states:
-  ``` javascript
-    modelEntity.addEventListener('model-error', (e) => {
-    console.error("Model failed to load:", e.detail.src);
-    alert("Failed to load the model...");
-    });
-  
-    modelEntity.addEventListener('model-loaded', () => {
-    document.getElementById('loadingOverlay').style.opacity = '0';
-    ...
-    });
-   ```
 - This enables **flexibility**: one viewer, many models — just change the URL.
 - Includes a loading overlay, controller-based locomotion (rotate + move), and desktop WASD/mouse navigation.
 
