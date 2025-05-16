@@ -131,12 +131,12 @@ Loads and displays a specific .glb file dynamically by passing its URL as a quer
   const urlParams = new URLSearchParams(window.location.search);
   const modelUrl = urlParams.get('model');
    ```
-- If a valid **model URL** is provided, it is decoded and injected into the scene
+- If a **valid URL** is provided, it is decoded and applied to the **`<a-entity id="model">`** in the A-Frame scene:
   ``` javascript
   const modelEntity = document.getElementById('model');
   modelEntity.setAttribute('gltf-model', decodedUrl);
   ```
-- This enables **flexibility**: one viewer, many models — just change the URL.
+- This approach makes the viewer **flexible and reusable**: the same viewer can display different models simply by changing the URL.
 - Includes a loading overlay, controller-based locomotion (rotate + move), and desktop WASD/mouse navigation.
 
 ## Future Improvements (Ideas)
